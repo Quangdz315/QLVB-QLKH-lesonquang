@@ -1,0 +1,79 @@
+@startuml
+title Kien truc he thong QLNS - QLVB - QLKH tren Odoo
+
+skinparam backgroundColor #F8FAFC
+skinparam shadowing false
+skinparam componentStyle rectangle
+
+actor "Nguoi dung\nAdmin / HR / Quan ly / Nhan vien" as User
+actor "Khach hang" as Customer
+
+node "Client" {
+  rectangle "Web Browser\nlocalhost:8069" as Browser
+  rectangle "External App 8070\nPython HTTP Server" as ExternalApp
+}
+
+node "Odoo Server 15\nlocalhost:8069" {
+  component "Odoo Web UI" as Web
+  package "Custom Addons" {
+    component "QLNS\nnhan_su" as QLNS
+    component "Cham cong & Luong\nquan_ly_cham_cong_luong" as Payroll
+    component "QLVB\nquan_ly_van_ban" as QLVB
+    component "QLKH\nquan_ly_khach_hang_van_ban" as QLKH
+    component "AI Tro ly\nqlvb.ai_assistant" as Assistant
+    component "Gemini Service\nai_gemini_service" as GeminiService
+  }
+  component "Odoo ORM\nModels / Views / Security" as ORM
+}
+
+database "PostgreSQL\nDatabase admin" as DB
+
+cloud "Google Gemini API" as GeminiAPI
+
+User --> Browser : Thao tac nghiep vu
+Customer --> ExternalApp : Du lieu khach hang
+
+Browser --> Web : HTTP
+ExternalApp --> Web : XML-RPC External API
+
+Web --> QLNS
+Web --> Payroll
+Web --> QLVB
+Web --> QLKH
+Web --> Assistant
+
+QLNS --> Payroll : Nhan vien, hop dong, luong co ban
+QLNS --> QLKH : Nhan vien phu trach khach hang
+QLNS --> QLVB : Nhan vien xu ly/nhan van ban
+QLVB --> QLKH : Van ban gan khach hang
+QLKH --> QLVB : Tra cuu van ban khach hang
+
+Assistant --> QLNS : Lay ngu canh nhan su
+Assistant --> QLVB : Lay ngu canh van ban
+Assistant --> QLKH : Lay ngu canh khach hang, cong no, cham soc
+
+QLVB --> GeminiService : Phan tich van ban
+QLKH --> GeminiService : Phan tich ho so, goi y tin nhan
+Assistant --> GeminiService : Cau hoi + ngu canh
+GeminiService --> GeminiAPI : HTTPS + GEMINI_API_KEY
+GeminiAPI --> GeminiService : Tom tat, uu tien, goi y
+
+QLNS --> ORM
+Payroll --> ORM
+QLVB --> ORM
+QLKH --> ORM
+Assistant --> ORM
+ORM --> DB : CRUD/Search/Compute
+
+note right of ExternalApp
+  App ngoai chay cong 8070,
+  ket noi Odoo bang XML-RPC.
+end note
+
+note right of GeminiService
+  API key cau hinh bang bien moi truong
+  GEMINI_API_KEY/GOOGLE_API_KEY
+  hoac tham so he thong Odoo.
+end note
+
+@enduml

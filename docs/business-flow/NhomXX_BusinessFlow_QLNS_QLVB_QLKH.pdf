@@ -1,0 +1,380 @@
+%PDF-1.4
+1 0 obj
+<< /Type /Pages /Kids [6 0 R] /Count 1 >>
+endobj
+2 0 obj
+<< /Type /Catalog /Pages 1 0 R >>
+endobj
+3 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica >>
+endobj
+4 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica-Bold >>
+endobj
+5 0 obj
+<< /Length 4477 >>
+stream
+0.96 0.97 0.99 rg
+0 0 1120 760 re
+f
+0.1 0.16 0.25 rg
+0 696 1120 64 re
+f
+1 1 1 rg
+BT
+/F2 18 Tf
+1 0 0 1 28 728 Tm
+(Business Flow End-to-End: QLNS + QLVB + QLKH) Tj
+ET
+BT
+/F1 10 Tf
+1 0 0 1 760 732 Tm
+(Happy path | Odoo + Gemini AI + External API) Tj
+ET
+0.9 0.96 1.0 rg
+0.8 0.84 0.9 RG
+0.8 w
+20 610 1080 70 re
+B
+0.16 0.2 0.28 rg
+BT
+/F2 12 Tf
+1 0 0 1 34 656 Tm
+(Khach hang) Tj
+ET
+0.94 0.98 0.92 rg
+0.8 0.84 0.9 RG
+0.8 w
+20 500 1080 110 re
+B
+0.16 0.2 0.28 rg
+BT
+/F2 12 Tf
+1 0 0 1 34 586 Tm
+(Nhan vien / HR) Tj
+ET
+1.0 0.97 0.88 rg
+0.8 0.84 0.9 RG
+0.8 w
+20 390 1080 110 re
+B
+0.16 0.2 0.28 rg
+BT
+/F2 12 Tf
+1 0 0 1 34 476 Tm
+(Quan ly) Tj
+ET
+0.96 0.93 1.0 rg
+0.8 0.84 0.9 RG
+0.8 w
+20 250 1080 140 re
+B
+0.16 0.2 0.28 rg
+BT
+/F2 12 Tf
+1 0 0 1 34 366 Tm
+(He thong Odoo) Tj
+ET
+0.91 0.97 0.96 rg
+0.8 0.84 0.9 RG
+0.8 w
+20 150 1080 100 re
+B
+0.16 0.2 0.28 rg
+BT
+/F2 12 Tf
+1 0 0 1 34 226 Tm
+(AI Gemini) Tj
+ET
+0.98 0.94 0.91 rg
+0.8 0.84 0.9 RG
+0.8 w
+20 70 1080 80 re
+B
+0.16 0.2 0.28 rg
+BT
+/F2 12 Tf
+1 0 0 1 34 126 Tm
+(App ngoai 8070) Tj
+ET
+1 1 1 rg
+0.34 0.39 0.49 RG
+1 w
+155 92 145 44 re
+B
+0.08 0.1 0.18 rg
+BT
+/F2 10 Tf
+1 0 0 1 165 116 Tm
+(1. Tao KH) Tj
+ET
+BT
+/F1 8 Tf
+1 0 0 1 165 98 Tm
+(App ngoai goi XML-RPC) Tj
+ET
+BT
+/F1 8 Tf
+1 0 0 1 165 86 Tm
+(tao ho so khach hang) Tj
+ET
+1 1 1 rg
+0.34 0.39 0.49 RG
+1 w
+340 515 145 50 re
+B
+0.08 0.1 0.18 rg
+BT
+/F2 10 Tf
+1 0 0 1 350 545 Tm
+(2. Phan cong) Tj
+ET
+BT
+/F1 8 Tf
+1 0 0 1 350 527 Tm
+(QLNS cung cap) Tj
+ET
+BT
+/F1 8 Tf
+1 0 0 1 350 515 Tm
+(nhan vien phu trach) Tj
+ET
+1 1 1 rg
+0.34 0.39 0.49 RG
+1 w
+520 270 145 50 re
+B
+0.08 0.1 0.18 rg
+BT
+/F2 10 Tf
+1 0 0 1 530 300 Tm
+(3. Lap van ban) Tj
+ET
+BT
+/F1 8 Tf
+1 0 0 1 530 282 Tm
+(QLVB tao VB den/di) Tj
+ET
+BT
+/F1 8 Tf
+1 0 0 1 530 270 Tm
+(gan KH/NV/phong ban) Tj
+ET
+1 1 1 rg
+0.34 0.39 0.49 RG
+1 w
+705 170 145 50 re
+B
+0.08 0.1 0.18 rg
+BT
+/F2 10 Tf
+1 0 0 1 715 200 Tm
+(4. AI phan tich) Tj
+ET
+BT
+/F1 8 Tf
+1 0 0 1 715 182 Tm
+(Gemini tom tat) Tj
+ET
+BT
+/F1 8 Tf
+1 0 0 1 715 170 Tm
+(uu tien, goi y xu ly) Tj
+ET
+1 1 1 rg
+0.34 0.39 0.49 RG
+1 w
+890 515 145 50 re
+B
+0.08 0.1 0.18 rg
+BT
+/F2 10 Tf
+1 0 0 1 900 545 Tm
+(5. CSKH lien he) Tj
+ET
+BT
+/F1 8 Tf
+1 0 0 1 900 527 Tm
+(Nhan vien gui tin) Tj
+ET
+BT
+/F1 8 Tf
+1 0 0 1 900 515 Tm
+(tu AI goi y) Tj
+ET
+1 1 1 rg
+0.34 0.39 0.49 RG
+1 w
+890 270 145 50 re
+B
+0.08 0.1 0.18 rg
+BT
+/F2 10 Tf
+1 0 0 1 900 300 Tm
+(6. Don hang) Tj
+ET
+BT
+/F1 8 Tf
+1 0 0 1 900 282 Tm
+(QLKH tao don hang) Tj
+ET
+BT
+/F1 8 Tf
+1 0 0 1 900 270 Tm
+(dich vu/hop dong) Tj
+ET
+1 1 1 rg
+0.34 0.39 0.49 RG
+1 w
+705 270 145 50 re
+B
+0.08 0.1 0.18 rg
+BT
+/F2 10 Tf
+1 0 0 1 715 300 Tm
+(7. Thanh toan) Tj
+ET
+BT
+/F1 8 Tf
+1 0 0 1 715 282 Tm
+(Ghi nhan thanh toan) Tj
+ET
+BT
+/F1 8 Tf
+1 0 0 1 715 270 Tm
+(tinh cong no tu dong) Tj
+ET
+1 1 1 rg
+0.34 0.39 0.49 RG
+1 w
+520 410 145 50 re
+B
+0.08 0.1 0.18 rg
+BT
+/F2 10 Tf
+1 0 0 1 530 440 Tm
+(8. Quan ly duyet) Tj
+ET
+BT
+/F1 8 Tf
+1 0 0 1 530 422 Tm
+(Xem dashboard) Tj
+ET
+BT
+/F1 8 Tf
+1 0 0 1 530 410 Tm
+(kiem tra cong no/VB) Tj
+ET
+1 1 1 rg
+0.34 0.39 0.49 RG
+1 w
+340 427 145 50 re
+B
+0.08 0.1 0.18 rg
+BT
+/F2 10 Tf
+1 0 0 1 350 457 Tm
+(9. Hen cham soc) Tj
+ET
+BT
+/F1 8 Tf
+1 0 0 1 350 439 Tm
+(Tao lich goi lai) Tj
+ET
+BT
+/F1 8 Tf
+1 0 0 1 350 427 Tm
+(cap nhat ket qua) Tj
+ET
+1 1 1 rg
+0.34 0.39 0.49 RG
+1 w
+155 625 145 44 re
+B
+0.08 0.1 0.18 rg
+BT
+/F2 10 Tf
+1 0 0 1 165 649 Tm
+(10. Ket qua) Tj
+ET
+BT
+/F1 8 Tf
+1 0 0 1 165 631 Tm
+(Khach hang nhan) Tj
+ET
+BT
+/F1 8 Tf
+1 0 0 1 165 619 Tm
+(phan hoi/hoan tat) Tj
+ET
+0.18 0.22 0.3 RG
+1.2 w
+300 114 m 340 535 l S
+340 535 m 332 539 l 332 531 l h f
+0.18 0.22 0.3 RG
+1.2 w
+485 535 m 520 295 l S
+520 295 m 512 299 l 512 291 l h f
+0.18 0.22 0.3 RG
+1.2 w
+665 295 m 705 195 l S
+705 195 m 697 199 l 697 191 l h f
+0.18 0.22 0.3 RG
+1.2 w
+850 195 m 890 535 l S
+890 535 m 882 539 l 882 531 l h f
+0.18 0.22 0.3 RG
+1.2 w
+962 515 m 962 320 l S
+962 320 m 954 324 l 954 316 l h f
+0.18 0.22 0.3 RG
+1.2 w
+890 295 m 850 295 l S
+850 295 m 858 299 l 858 291 l h f
+0.18 0.22 0.3 RG
+1.2 w
+705 295 m 665 435 l S
+665 435 m 673 439 l 673 431 l h f
+0.18 0.22 0.3 RG
+1.2 w
+520 435 m 485 452 l S
+485 452 m 493 456 l 493 448 l h f
+0.18 0.22 0.3 RG
+1.2 w
+340 452 m 300 647 l S
+300 647 m 308 651 l 308 643 l h f
+1 1 1 rg
+0.72 0.76 0.84 RG
+1 w
+28 18 1064 40 re
+B
+0.18 0.22 0.3 rg
+BT
+/F1 8 Tf
+1 0 0 1 42 42 Tm
+(Diem tich hop: QLNS cap nhan vien phu trach; QLVB luu van ban theo KH/NV/phong ban; QLKH gom ho so, don hang, cong no, cham soc.) Tj
+ET
+BT
+/F1 8 Tf
+1 0 0 1 42 28 Tm
+(AI/API: Gemini nhan ngu canh tu Odoo de tom tat, uu tien, goi y tin nhan; External App 8070 tao/xem du lieu qua XML-RPC.) Tj
+ET
+endstream
+endobj
+6 0 obj
+<< /Type /Page /Parent 1 0 R /MediaBox [0 0 1120 760] /Resources << /Font << /F1 3 0 R /F2 4 0 R >> >> /Contents 5 0 R >>
+endobj
+xref
+0 7
+0000000000 65535 f 
+0000000009 00000 n 
+0000000066 00000 n 
+0000000115 00000 n 
+0000000185 00000 n 
+0000000260 00000 n 
+0000004789 00000 n 
+trailer
+<< /Size 7 /Root 2 0 R >>
+startxref
+4926
+%%EOF
