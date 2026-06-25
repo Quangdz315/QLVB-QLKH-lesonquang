@@ -1,16 +1,77 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
     <data>
-        <menuitem
-            id="menu_root"
-            name="QLNS"
-            sequence="0"/>
-          
-        <menuitem name="Quản lý nhân viên" 
-            id="menu_nhan_vien" 
-            parent="menu_root" 
-            sequence="1"
-            action="action_nhan_vien"
-        />
+        <menuitem id="menu_root"
+                  name="QLNS"
+                  sequence="0"/>
+
+        <menuitem id="menu_ho_so_nhan_su"
+                  name="Hồ sơ nhân sự"
+                  parent="menu_root"
+                  sequence="1"/>
+
+        <menuitem id="menu_nhan_vien"
+                  name="Nhân viên"
+                  parent="menu_ho_so_nhan_su"
+                  sequence="1"
+                  action="action_nhan_vien"/>
+
+        <menuitem id="menu_hop_dong_lao_dong"
+                  name="Hợp đồng lao động"
+                  parent="menu_ho_so_nhan_su"
+                  sequence="2"
+                  action="action_hop_dong_lao_dong"/>
+
+        <menuitem id="menu_nghi_phep"
+                  name="Nghỉ phép"
+                  parent="menu_ho_so_nhan_su"
+                  sequence="3"
+                  action="action_nghi_phep"/>
+
+        <menuitem id="menu_dao_tao_bang_cap"
+                  name="Đào tạo &amp; Bằng cấp"
+                  parent="menu_ho_so_nhan_su"
+                  sequence="4"
+                  action="action_dao_tao_bang_cap"/>
+
+        <menuitem id="menu_danh_gia_nhan_vien"
+                  name="Đánh giá nhân viên"
+                  parent="menu_ho_so_nhan_su"
+                  sequence="5"
+                  action="action_danh_gia_nhan_vien"/>
+
+        <menuitem id="menu_co_cau_to_chuc"
+                  name="Cơ cấu tổ chức"
+                  parent="menu_root"
+                  sequence="2"/>
+
+        <menuitem id="menu_phong_ban"
+                  name="Phòng ban"
+                  parent="menu_co_cau_to_chuc"
+                  sequence="1"
+                  action="action_phong_ban"/>
+
+        <menuitem id="menu_chuc_vu"
+                  name="Chức vụ"
+                  parent="menu_co_cau_to_chuc"
+                  sequence="2"
+                  action="action_chuc_vu"/>
+
+        <menuitem id="menu_tuyen_dung_root"
+                  name="Tuyển dụng"
+                  parent="menu_root"
+                  sequence="5"/>
+
+        <menuitem id="menu_vi_tri_tuyen_dung"
+                  name="Vị trí tuyển dụng"
+                  parent="menu_tuyen_dung_root"
+                  sequence="1"
+                  action="action_vi_tri_tuyen_dung"/>
+
+        <menuitem id="menu_ung_vien_tuyen_dung"
+                  name="Ứng viên tuyển dụng"
+                  parent="menu_tuyen_dung_root"
+                  sequence="2"
+                  action="action_ung_vien_tuyen_dung"/>
     </data>
 </odoo>

@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_khach_hang_form_inherit_care" model="ir.ui.view">
+        <field name="name">res.partner.khach.hang.form.inherit.care</field>
+        <field name="model">res.partner</field>
+        <field name="inherit_id" ref="quan_ly_khach_hang_van_ban.view_khach_hang_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//div[@name='button_box']" position="inside">
+                <button name="action_view_cham_soc"
+                        type="object"
+                        class="oe_stat_button"
+                        icon="fa-comments">
+                    <field name="so_lan_cham_soc" widget="statinfo" string="Chăm sóc"/>
+                </button>
+            </xpath>
+            <xpath expr="//field[@name='trang_thai_cham_soc']" position="after">
+                <field name="so_lan_cham_soc" readonly="1"/>
+                <field name="ngay_cham_soc_gan_nhat" readonly="1"/>
+                <field name="ngay_hen_cham_soc_tiep_theo" readonly="1"/>
+            </xpath>
+            <xpath expr="//page[field[@name='ghi_chu_ho_so']]" position="before">
+                <page string="Chăm sóc khách hàng">
+                    <field name="cham_soc_ids"
+                           context="{'default_khach_hang_id': active_id, 'default_nhan_vien_phu_trach_id': nhan_vien_phu_trach_id}">
+                        <tree editable="bottom">
+                            <field name="name" readonly="1"/>
+                            <field name="khach_hang_id" invisible="1"/>
+                            <field name="ngay_cham_soc"/>
+                            <field name="nhan_vien_phu_trach_id"/>
+                            <field name="kenh"/>
+                            <field name="muc_dich"/>
+                            <field name="don_hang_id"/>
+                            <field name="noi_dung"/>
+                            <field name="ngay_hen_tiep_theo"/>
+                            <field name="trang_thai"/>
+                        </tree>
+                    </field>
+                </page>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="view_khach_hang_tree_inherit_care" model="ir.ui.view">
+        <field name="name">res.partner.khach.hang.tree.inherit.care</field>
+        <field name="model">res.partner</field>
+        <field name="inherit_id" ref="quan_ly_khach_hang_van_ban.view_khach_hang_tree"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='trang_thai_cham_soc']" position="after">
+                <field name="so_lan_cham_soc"/>
+                <field name="ngay_hen_cham_soc_tiep_theo"/>
+            </xpath>
+        </field>
+    </record>
+</odoo>

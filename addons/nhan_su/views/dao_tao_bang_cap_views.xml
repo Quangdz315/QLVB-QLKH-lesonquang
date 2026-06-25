@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo><data>
+    <record id="view_dao_tao_bang_cap_tree" model="ir.ui.view">
+        <field name="name">dao_tao_bang_cap.tree</field><field name="model">dao_tao_bang_cap</field>
+        <field name="arch" type="xml"><tree decoration-success="trang_thai == 'hoan_thanh'" decoration-muted="trang_thai in ('huy','het_han')">
+            <field name="nhan_vien_id"/><field name="phong_ban_id"/><field name="loai"/><field name="ten_chuong_trinh"/>
+            <field name="don_vi_dao_tao"/><field name="ngay_ket_thuc"/><field name="ngay_het_han"/><field name="trang_thai" widget="badge"/>
+        </tree></field>
+    </record>
+    <record id="view_dao_tao_bang_cap_form" model="ir.ui.view">
+        <field name="name">dao_tao_bang_cap.form</field><field name="model">dao_tao_bang_cap</field>
+        <field name="arch" type="xml"><form string="Đào tạo và bằng cấp">
+            <header>
+                <button name="action_dang_hoc" string="Bắt đầu học" type="object" class="oe_highlight" attrs="{'invisible': [('trang_thai', '!=', 'ke_hoach')]}"/>
+                <button name="action_hoan_thanh" string="Hoàn thành" type="object" class="oe_highlight" attrs="{'invisible': [('trang_thai', 'not in', ('ke_hoach','dang_hoc'))]}"/>
+                <button name="action_huy" string="Hủy" type="object" attrs="{'invisible': [('trang_thai', 'in', ('hoan_thanh','huy'))]}"/>
+                <field name="trang_thai" widget="statusbar" statusbar_visible="ke_hoach,dang_hoc,hoan_thanh"/>
+            </header>
+            <sheet>
+                <group>
+                    <group string="Nhân sự"><field name="nhan_vien_id"/><field name="phong_ban_id" readonly="1"/><field name="chuc_vu_id" readonly="1"/></group>
+                    <group string="Thông tin đào tạo"><field name="loai"/><field name="ten_chuong_trinh"/><field name="don_vi_dao_tao"/><field name="chuyen_nganh"/></group>
+                </group>
+                <group>
+                    <group string="Thời hạn"><field name="ngay_bat_dau"/><field name="ngay_ket_thuc"/><field name="ngay_het_han"/><field name="ket_qua"/></group>
+                    <group string="Chi phí &amp; minh chứng"><field name="chi_phi"/><field name="cong_ty_chi_tra"/><field name="ten_tep_dinh_kem" invisible="1"/><field name="tep_dinh_kem" filename="ten_tep_dinh_kem"/></group>
+                </group>
+                <group string="Ghi chú"><field name="ghi_chu"/></group>
+            </sheet>
+        </form></field>
+    </record>
+    <record id="view_dao_tao_bang_cap_search" model="ir.ui.view">
+        <field name="name">dao_tao_bang_cap.search</field><field name="model">dao_tao_bang_cap</field>
+        <field name="arch" type="xml"><search>
+            <field name="nhan_vien_id"/><field name="phong_ban_id"/><field name="loai"/><field name="ten_chuong_trinh"/><field name="trang_thai"/>
+            <filter name="dang_hoc" string="Đang học" domain="[('trang_thai','=','dang_hoc')]"/>
+            <filter name="hoan_thanh" string="Hoàn thành" domain="[('trang_thai','=','hoan_thanh')]"/>
+            <group expand="0" string="Nhóm theo">
+                <filter name="group_nhan_vien" string="Nhân viên" context="{'group_by':'nhan_vien_id'}"/>
+                <filter name="group_phong_ban" string="Phòng ban" context="{'group_by':'phong_ban_id'}"/>
+                <filter name="group_loai" string="Loại" context="{'group_by':'loai'}"/>
+                <filter name="group_trang_thai" string="Trạng thái" context="{'group_by':'trang_thai'}"/>
+            </group>
+        </search></field>
+    </record>
+    <record id="action_dao_tao_bang_cap" model="ir.actions.act_window"><field name="name">Đào tạo &amp; Bằng cấp</field><field name="res_model">dao_tao_bang_cap</field><field name="view_mode">tree,form</field><field name="search_view_id" ref="view_dao_tao_bang_cap_search"/></record>
+</data></odoo>

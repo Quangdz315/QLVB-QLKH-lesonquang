@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_qlvb_ai_assistant_tree" model="ir.ui.view">
+        <field name="name">qlvb.ai.assistant.tree</field>
+        <field name="model">qlvb.ai_assistant</field>
+        <field name="arch" type="xml">
+            <tree string="AI Trợ lý">
+                <field name="name"/>
+                <field name="pham_vi"/>
+                <field name="cau_hoi"/>
+                <field name="hoi_luc"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="view_qlvb_ai_assistant_form" model="ir.ui.view">
+        <field name="name">qlvb.ai.assistant.form</field>
+        <field name="model">qlvb.ai_assistant</field>
+        <field name="arch" type="xml">
+            <form string="AI Trợ lý">
+                <header>
+                    <button name="action_hoi_gemini"
+                            type="object"
+                            string="Hỏi Gemini"
+                            class="oe_highlight"/>
+                    <button name="action_lam_moi"
+                            type="object"
+                            string="Làm mới"/>
+                </header>
+                <sheet>
+                    <div class="oe_title">
+                        <label for="name"/>
+                        <h1>
+                            <field name="name" placeholder="Ví dụ: Hỏi AI về hồ sơ hôm nay"/>
+                        </h1>
+                    </div>
+                    <group>
+                        <group>
+                            <field name="pham_vi"/>
+                            <field name="hoi_luc" readonly="1"/>
+                        </group>
+                    </group>
+                    <group string="Bạn muốn hỏi gì?">
+                        <field name="cau_hoi"
+                               nolabel="1"
+                               placeholder="Ví dụ: Hôm nay có văn bản nào cần xử lý gấp không? Khách hàng nào cần ưu tiên chăm sóc?"/>
+                    </group>
+                    <group string="Gemini trả lời">
+                        <field name="cau_tra_loi" nolabel="1" readonly="1"/>
+                    </group>
+                    <group string="Ngữ cảnh dữ liệu đã gửi cho AI">
+                        <field name="ngu_canh_du_lieu" nolabel="1" readonly="1"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_qlvb_ai_assistant" model="ir.actions.act_window">
+        <field name="name">AI Trợ lý</field>
+        <field name="res_model">qlvb.ai_assistant</field>
+        <field name="view_mode">tree,form</field>
+        <field name="context">{'default_name': 'Phiên hỏi AI'}</field>
+    </record>
+
+    <menuitem id="menu_qlvb_ai_assistant"
+              name="AI Trợ lý"
+              parent="menu_van_ban_root"
+              action="action_qlvb_ai_assistant"
+              sequence="70"/>
+</odoo>

@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_qlvb_openai_settings_form" model="ir.ui.view">
+        <field name="name">res.config.settings.qlvb.gemini.form</field>
+        <field name="model">res.config.settings</field>
+        <field name="arch" type="xml">
+            <form string="Cấu hình Google Gemini cho QLVB">
+                <sheet>
+                    <group string="Kết nối Google Gemini">
+                        <field name="qlvb_gemini_enabled"/>
+                        <field name="qlvb_gemini_api_key" password="True"
+                               attrs="{'required': [('qlvb_gemini_enabled', '=', True)]}"/>
+                        <field name="qlvb_gemini_model"
+                               attrs="{'required': [('qlvb_gemini_enabled', '=', True)]}"/>
+                        <field name="qlvb_gemini_fallback"/>
+                    </group>
+                    <div class="alert alert-info" role="alert">
+                        Lấy API key tại Google AI Studio. Có thể nhập tại đây hoặc đặt biến môi trường GEMINI_API_KEY trên máy chủ Odoo để không lưu key trong mã nguồn.
+                    </div>
+                </sheet>
+                <footer>
+                    <button name="action_test_qlvb_gemini" type="object"
+                            string="Lưu và kiểm tra kết nối" class="btn-primary"/>
+                    <button name="execute" type="object" string="Lưu" class="btn-secondary"/>
+                    <button string="Hủy" class="btn-secondary" special="cancel"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+    <record id="action_qlvb_openai_settings" model="ir.actions.act_window">
+        <field name="name">Cấu hình Gemini</field>
+        <field name="res_model">res.config.settings</field>
+        <field name="view_mode">form</field>
+        <field name="view_id" ref="view_qlvb_openai_settings_form"/>
+        <field name="target">new</field>
+    </record>
+</odoo>

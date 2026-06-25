@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo><data>
+    <record id="view_vi_tri_tuyen_dung_tree" model="ir.ui.view">
+        <field name="name">vi_tri_tuyen_dung.tree</field><field name="model">vi_tri_tuyen_dung</field>
+        <field name="arch" type="xml"><tree decoration-success="trang_thai == 'mo'" decoration-muted="trang_thai == 'dong'">
+            <field name="ten_vi_tri"/><field name="phong_ban_id"/><field name="chuc_vu_id"/><field name="so_luong_can_tuyen"/>
+            <field name="so_ung_vien"/><field name="so_da_tuyen"/><field name="han_nop"/><field name="trang_thai" widget="badge"/>
+        </tree></field>
+    </record>
+    <record id="view_vi_tri_tuyen_dung_form" model="ir.ui.view">
+        <field name="name">vi_tri_tuyen_dung.form</field><field name="model">vi_tri_tuyen_dung</field>
+        <field name="arch" type="xml"><form string="Vị trí tuyển dụng">
+            <header>
+                <button name="action_mo" string="Mở tuyển" type="object" class="oe_highlight" attrs="{'invisible': [('trang_thai', '=', 'mo')]}"/>
+                <button name="action_tam_dung" string="Tạm dừng" type="object" attrs="{'invisible': [('trang_thai', '!=', 'mo')]}"/>
+                <button name="action_dong" string="Đóng" type="object" attrs="{'invisible': [('trang_thai', '=', 'dong')]}"/>
+                <field name="trang_thai" widget="statusbar" statusbar_visible="mo,tam_dung,dong"/>
+            </header>
+            <sheet>
+                <div class="oe_title"><h1><field name="ten_vi_tri" placeholder="Nhập vị trí tuyển dụng..."/></h1></div>
+                <group>
+                    <group string="Nhu cầu tuyển"><field name="phong_ban_id"/><field name="chuc_vu_id"/><field name="so_luong_can_tuyen"/><field name="muc_luong_du_kien"/></group>
+                    <group string="Thời gian"><field name="ngay_mo"/><field name="han_nop"/><field name="so_ung_vien" readonly="1"/><field name="so_da_tuyen" readonly="1"/></group>
+                </group>
+                <notebook>
+                    <page string="Ứng viên"><field name="ung_vien_ids"><tree editable="bottom"><field name="ho_ten"/><field name="email"/><field name="so_dien_thoai"/><field name="trang_thai"/></tree></field></page>
+                    <page string="Mô tả"><group><field name="mo_ta"/><field name="yeu_cau"/></group></page>
+                </notebook>
+            </sheet>
+        </form></field>
+    </record>
+    <record id="view_vi_tri_tuyen_dung_search" model="ir.ui.view"><field name="name">vi_tri_tuyen_dung.search</field><field name="model">vi_tri_tuyen_dung</field><field name="arch" type="xml"><search>
+        <field name="ten_vi_tri"/><field name="phong_ban_id"/><field name="chuc_vu_id"/><field name="trang_thai"/>
+        <filter name="dang_tuyen" string="Đang tuyển" domain="[('trang_thai','=','mo')]"/>
+        <group expand="0" string="Nhóm theo"><filter name="group_phong_ban" string="Phòng ban" context="{'group_by':'phong_ban_id'}"/><filter name="group_trang_thai" string="Trạng thái" context="{'group_by':'trang_thai'}"/></group>
+    </search></field></record>
+    <record id="action_vi_tri_tuyen_dung" model="ir.actions.act_window"><field name="name">Vị trí tuyển dụng</field><field name="res_model">vi_tri_tuyen_dung</field><field name="view_mode">tree,form</field><field name="search_view_id" ref="view_vi_tri_tuyen_dung_search"/></record>
+
+
+    <record id="view_ung_vien_tuyen_dung_kanban" model="ir.ui.view">
+        <field name="name">ung_vien_tuyen_dung.kanban</field>
+        <field name="model">ung_vien_tuyen_dung</field>
+        <field name="arch" type="xml">
+            <kanban default_group_by="trang_thai" class="o_kanban_small_column">
+                <field name="ho_ten"/>
+                <field name="vi_tri_id"/>
+                <field name="phong_ban_id"/>
+                <field name="email"/>
+                <field name="so_dien_thoai"/>
+                <field name="diem_phong_van"/>
+                <field name="trang_thai"/>
+                <templates>
+                    <t t-name="kanban-box">
+                        <div class="oe_kanban_global_click o_kanban_record">
+                            <strong><field name="ho_ten"/></strong>
+                            <div><field name="vi_tri_id"/></div>
+                            <div t-if="record.phong_ban_id.raw_value"><field name="phong_ban_id"/></div>
+                            <div t-if="record.email.raw_value"><i class="fa fa-envelope-o" title="Email"/> <field name="email"/></div>
+                            <div t-if="record.so_dien_thoai.raw_value"><i class="fa fa-phone" title="Điện thoại"/> <field name="so_dien_thoai"/></div>
+                            <div t-if="record.diem_phong_van.raw_value">Điểm PV: <field name="diem_phong_van"/></div>
+                        </div>
+                    </t>
+                </templates>
+            </kanban>
+        </field>
+    </record>
+
+    <record id="view_ung_vien_tuyen_dung_tree" model="ir.ui.view"><field name="name">ung_vien_tuyen_dung.tree</field><field name="model">ung_vien_tuyen_dung</field><field name="arch" type="xml"><tree decoration-success="trang_thai == 'trung_tuyen'" decoration-danger="trang_thai == 'tu_choi'">
+        <field name="ho_ten"/><field name="vi_tri_id"/><field name="phong_ban_id"/><field name="email"/><field name="so_dien_thoai"/><field name="ngay_phong_van"/><field name="diem_phong_van"/><field name="trang_thai" widget="badge"/>
+    </tree></field></record>
+    <record id="view_ung_vien_tuyen_dung_form" model="ir.ui.view"><field name="name">ung_vien_tuyen_dung.form</field><field name="model">ung_vien_tuyen_dung</field><field name="arch" type="xml"><form string="Ứng viên tuyển dụng">
+        <header>
+            <button name="action_sang_loc" string="Sàng lọc" type="object" attrs="{'invisible': [('trang_thai', '!=', 'moi')]}"/>
+            <button name="action_phong_van" string="Phỏng vấn" type="object" class="oe_highlight" attrs="{'invisible': [('trang_thai', 'not in', ('moi','sang_loc'))]}"/>
+            <button name="action_trung_tuyen" string="Trúng tuyển" type="object" class="oe_highlight" attrs="{'invisible': [('trang_thai', 'not in', ('phong_van','sang_loc'))]}"/>
+            <button name="action_tao_nhan_vien" string="Tạo nhân viên" type="object" class="oe_highlight" attrs="{'invisible': [('trang_thai', '!=', 'trung_tuyen')]}"/>
+            <button name="action_tu_choi" string="Từ chối" type="object" attrs="{'invisible': [('trang_thai', 'in', ('trung_tuyen','tu_choi','huy'))]}"/>
+            <field name="trang_thai" widget="statusbar" statusbar_visible="moi,sang_loc,phong_van,trung_tuyen"/>
+        </header>
+        <sheet><div class="oe_title"><h1><field name="ho_ten"/></h1></div>
+            <group><group string="Thông tin ứng tuyển"><field name="vi_tri_id"/><field name="phong_ban_id" readonly="1"/><field name="chuc_vu_id" readonly="1"/><field name="nguon_tuyen_dung"/><field name="ngay_nop"/></group><group string="Liên hệ"><field name="email" widget="email"/><field name="so_dien_thoai"/><field name="ngay_sinh"/><field name="dia_chi"/></group></group>
+            <group><group string="Phỏng vấn"><field name="ngay_phong_van"/><field name="nguoi_phong_van_id"/><field name="diem_phong_van"/><field name="muc_luong_de_xuat"/></group><group string="Hồ sơ"><field name="ten_cv_file" invisible="1"/><field name="cv_file" filename="ten_cv_file"/><field name="nhan_vien_tao_id" readonly="1"/></group></group>
+            <group string="Ghi chú"><field name="ghi_chu"/></group>
+        </sheet>
+    </form></field></record>
+    <record id="view_ung_vien_tuyen_dung_search" model="ir.ui.view"><field name="name">ung_vien_tuyen_dung.search</field><field name="model">ung_vien_tuyen_dung</field><field name="arch" type="xml"><search>
+        <field name="ho_ten"/><field name="vi_tri_id"/><field name="phong_ban_id"/><field name="trang_thai"/><field name="nguon_tuyen_dung"/>
+        <filter name="phong_van" string="Phỏng vấn" domain="[('trang_thai','=','phong_van')]"/><filter name="trung_tuyen" string="Trúng tuyển" domain="[('trang_thai','=','trung_tuyen')]"/>
+        <group expand="0" string="Nhóm theo"><filter name="group_vi_tri" string="Vị trí" context="{'group_by':'vi_tri_id'}"/><filter name="group_phong_ban" string="Phòng ban" context="{'group_by':'phong_ban_id'}"/><filter name="group_trang_thai" string="Trạng thái" context="{'group_by':'trang_thai'}"/><filter name="group_nguon" string="Nguồn" context="{'group_by':'nguon_tuyen_dung'}"/></group>
+    </search></field></record>
+    <record id="action_ung_vien_tuyen_dung" model="ir.actions.act_window"><field name="name">Ứng viên tuyển dụng</field><field name="res_model">ung_vien_tuyen_dung</field><field name="view_mode">kanban,tree,form</field><field name="search_view_id" ref="view_ung_vien_tuyen_dung_search"/></record>
+</data></odoo>

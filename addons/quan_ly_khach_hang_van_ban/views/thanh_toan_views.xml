@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_qlkh_thanh_toan_tree" model="ir.ui.view">
+        <field name="name">qlkh.thanh_toan.tree</field>
+        <field name="model">qlkh.thanh_toan</field>
+        <field name="arch" type="xml">
+            <tree decoration-success="trang_thai == 'xac_nhan'"
+                  decoration-muted="trang_thai == 'huy'">
+                <field name="name"/>
+                <field name="khach_hang_id"/>
+                <field name="don_hang_id"/>
+                <field name="ngay_thanh_toan"/>
+                <field name="so_tien" sum="Tổng thanh toán"/>
+                <field name="phuong_thuc"/>
+                <field name="trang_thai" widget="badge"/>
+                <field name="ghi_chu"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="view_qlkh_thanh_toan_form" model="ir.ui.view">
+        <field name="name">qlkh.thanh_toan.form</field>
+        <field name="model">qlkh.thanh_toan</field>
+        <field name="arch" type="xml">
+            <form string="Thanh toán">
+                <header>
+                    <button name="action_xac_nhan" type="object" string="Xác nhận"
+                            class="oe_highlight" attrs="{'invisible': [('trang_thai', '!=', 'nhap')]}"/>
+                    <button name="action_huy" type="object" string="Hủy"
+                            attrs="{'invisible': [('trang_thai', '=', 'huy')]}"/>
+                    <button name="action_dat_nhap" type="object" string="Đưa về nháp"
+                            attrs="{'invisible': [('trang_thai', '=', 'nhap')]}"/>
+                    <field name="trang_thai" widget="statusbar" statusbar_visible="nhap,xac_nhan,huy"/>
+                </header>
+                <sheet>
+                    <div class="oe_title">
+                        <label for="name"/>
+                        <h1><field name="name" readonly="1"/></h1>
+                    </div>
+                    <group>
+                        <group string="Thông tin thanh toán">
+                            <field name="khach_hang_id"/>
+                            <field name="don_hang_id" domain="[('khach_hang_id', '=', khach_hang_id)]"/>
+                            <field name="ngay_thanh_toan"/>
+                        </group>
+                        <group string="Số tiền">
+                            <field name="so_tien"/>
+                            <field name="phuong_thuc"/>
+                        </group>
+                    </group>
+                    <group string="Ghi chú">
+                        <field name="ghi_chu" nolabel="1"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_qlkh_thanh_toan_search" model="ir.ui.view">
+        <field name="name">qlkh.thanh_toan.search</field>
+        <field name="model">qlkh.thanh_toan</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="name"/>
+                <field name="khach_hang_id"/>
+                <field name="don_hang_id"/>
+                <filter name="da_xac_nhan" string="Đã xác nhận" domain="[('trang_thai','=','xac_nhan')]"/>
+                <filter name="ban_nhap" string="Bản nháp" domain="[('trang_thai','=','nhap')]"/>
+                <group expand="0" string="Nhóm theo">
+                    <filter name="group_khach_hang" string="Khách hàng" context="{'group_by': 'khach_hang_id'}"/>
+                    <filter name="group_don_hang" string="Đơn hàng" context="{'group_by': 'don_hang_id'}"/>
+                    <filter name="group_trang_thai" string="Trạng thái" context="{'group_by': 'trang_thai'}"/>
+                    <filter name="group_phuong_thuc" string="Phương thức" context="{'group_by': 'phuong_thuc'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+
+    <record id="action_qlkh_thanh_toan" model="ir.actions.act_window">
+        <field name="name">Thanh toán/Công nợ</field>
+        <field name="res_model">qlkh.thanh_toan</field>
+        <field name="view_mode">tree,form</field>
+        <field name="search_view_id" ref="view_qlkh_thanh_toan_search"/>
+    </record>
+
+    <menuitem id="menu_qlkh_thanh_toan"
+              name="Thanh toán/Công nợ"
+              parent="menu_de_tai_4_root"
+              action="action_qlkh_thanh_toan"
+              sequence="5"/>
+</odoo>

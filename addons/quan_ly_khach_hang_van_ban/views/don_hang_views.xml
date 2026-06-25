@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_qlkh_don_hang_tree" model="ir.ui.view">
+        <field name="name">qlkh.don_hang.tree</field>
+        <field name="model">qlkh.don_hang</field>
+        <field name="arch" type="xml">
+            <tree decoration-success="trang_thai == 'hoan_thanh'"
+                  decoration-warning="con_no &gt; 0 and trang_thai != 'huy'"
+                  decoration-muted="trang_thai == 'huy'">
+                <field name="ma_don_hang"/>
+                <field name="ten_don_hang"/>
+                <field name="khach_hang_id"/>
+                <field name="nhan_vien_phu_trach_id"/>
+                <field name="ngay_don"/>
+                <field name="loai_don_hang"/>
+                <field name="gia_tri" sum="Tổng giá trị"/>
+                <field name="da_thanh_toan" sum="Đã thanh toán"/>
+                <field name="con_no" sum="Công nợ"/>
+                <field name="trang_thai" widget="badge"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="view_qlkh_don_hang_form" model="ir.ui.view">
+        <field name="name">qlkh.don_hang.form</field>
+        <field name="model">qlkh.don_hang</field>
+        <field name="arch" type="xml">
+            <form string="Đơn hàng/Dịch vụ">
+                <header>
+                    <button name="action_xac_nhan" type="object" string="Xác nhận"
+                            class="oe_highlight" attrs="{'invisible': [('trang_thai', '!=', 'nhap')]}"/>
+                    <button name="action_dang_thuc_hien" type="object" string="Đang thực hiện"
+                            attrs="{'invisible': [('trang_thai', 'not in', ['nhap', 'xac_nhan'])]}"/>
+                    <button name="action_hoan_thanh" type="object" string="Hoàn thành"
+                            attrs="{'invisible': [('trang_thai', 'not in', ['xac_nhan', 'dang_thuc_hien'])]}"/>
+                    <button name="action_huy" type="object" string="Hủy"
+                            attrs="{'invisible': [('trang_thai', 'in', ['huy', 'hoan_thanh'])]}"/>
+                    <button name="action_dat_nhap" type="object" string="Đưa về nháp"
+                            attrs="{'invisible': [('trang_thai', '=', 'nhap')]}"/>
+                    <field name="trang_thai" widget="statusbar"
+                           statusbar_visible="nhap,xac_nhan,dang_thuc_hien,hoan_thanh"/>
+                </header>
+                <sheet>
+                    <div class="oe_title">
+                        <label for="ten_don_hang"/>
+                        <h1><field name="ten_don_hang" placeholder="Tên đơn hàng hoặc dịch vụ..."/></h1>
+                        <div class="o_row">
+                            <field name="ma_don_hang" readonly="1"/>
+                        </div>
+                    </div>
+                    <group>
+                        <group string="Thông tin đơn hàng">
+                            <field name="khach_hang_id"/>
+                            <field name="nhan_vien_phu_trach_id"/>
+                            <field name="ngay_don"/>
+                            <field name="ngay_du_kien_hoan_thanh"/>
+                            <field name="loai_don_hang"/>
+                        </group>
+                        <group string="Giá trị &amp; Công nợ">
+                            <field name="gia_tri"/>
+                            <field name="da_thanh_toan" readonly="1"/>
+                            <field name="con_no" readonly="1"/>
+                        </group>
+                    </group>
+                    <notebook>
+                        <page string="Thanh toán">
+                            <field name="thanh_toan_ids"
+                                   context="{'default_don_hang_id': active_id, 'default_khach_hang_id': khach_hang_id}">
+                                <tree editable="bottom">
+                                    <field name="name" readonly="1"/>
+                                    <field name="ngay_thanh_toan"/>
+                                    <field name="so_tien"/>
+                                    <field name="phuong_thuc"/>
+                                    <field name="trang_thai"/>
+                                    <field name="ghi_chu"/>
+                                </tree>
+                            </field>
+                        </page>
+                        <page string="Ghi chú">
+                            <field name="ghi_chu"/>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_qlkh_don_hang_search" model="ir.ui.view">
+        <field name="name">qlkh.don_hang.search</field>
+        <field name="model">qlkh.don_hang</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="ma_don_hang"/>
+                <field name="ten_don_hang"/>
+                <field name="khach_hang_id"/>
+                <field name="nhan_vien_phu_trach_id"/>
+                <filter name="con_no" string="Còn công nợ" domain="[('con_no', '&gt;', 0)]"/>
+                <filter name="dang_thuc_hien" string="Đang thực hiện" domain="[('trang_thai','=','dang_thuc_hien')]"/>
+                <filter name="hoan_thanh" string="Hoàn thành" domain="[('trang_thai','=','hoan_thanh')]"/>
+                <group expand="0" string="Nhóm theo">
+                    <filter name="group_khach_hang" string="Khách hàng" context="{'group_by': 'khach_hang_id'}"/>
+                    <filter name="group_nhan_vien" string="Nhân viên phụ trách" context="{'group_by': 'nhan_vien_phu_trach_id'}"/>
+                    <filter name="group_trang_thai" string="Trạng thái" context="{'group_by': 'trang_thai'}"/>
+                    <filter name="group_loai" string="Loại đơn" context="{'group_by': 'loai_don_hang'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+
+    <record id="action_qlkh_don_hang" model="ir.actions.act_window">
+        <field name="name">Đơn hàng/Dịch vụ</field>
+        <field name="res_model">qlkh.don_hang</field>
+        <field name="view_mode">tree,form</field>
+        <field name="search_view_id" ref="view_qlkh_don_hang_search"/>
+    </record>
+
+    <menuitem id="menu_qlkh_don_hang"
+              name="Đơn hàng/Dịch vụ"
+              parent="menu_de_tai_4_root"
+              action="action_qlkh_don_hang"
+              sequence="4"/>
+</odoo>

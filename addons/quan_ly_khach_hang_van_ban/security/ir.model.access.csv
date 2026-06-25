@@ -1,0 +1,4 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_qlkh_don_hang,access.qlkh.don_hang,model_qlkh_don_hang,,1,1,1,1
+access_qlkh_thanh_toan,access.qlkh.thanh_toan,model_qlkh_thanh_toan,,1,1,1,1
+access_qlkh_cham_soc,access.qlkh.cham_soc,model_qlkh_cham_soc,,1,1,1,1

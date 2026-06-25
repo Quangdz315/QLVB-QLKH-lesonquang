@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates xml:space="preserve">
+    <t t-name="quan_ly_khach_hang_van_ban.CustomerDashboard">
+        <div class="o_ql_dashboard"/>
+    </t>
+
+    <t t-name="quan_ly_khach_hang_van_ban.CustomerDashboardContent">
+        <div class="o_ql_dashboard o_ql_customer_dashboard">
+            <div class="o_ql_dashboard_header">
+                <div>
+                    <p class="o_ql_kicker">QLKH</p>
+                    <h1>Dashboard Quản lý khách hàng</h1>
+                    <span>Theo dõi khách hàng, văn bản, hợp đồng và cảnh báo hồ sơ.</span>
+                </div>
+                <button class="btn btn-primary o_ql_dash_link" data-action="quan_ly_khach_hang_van_ban.action_khach_hang_ho_so">
+                    <i class="fa fa-plus"/> Thêm khách hàng
+                </button>
+            </div>
+
+            <div class="o_ql_stat_grid">
+                <t t-foreach="data.stats" t-as="stat">
+                    <button type="button" t-attf-class="o_ql_dashboard_card o_ql_tone_#{stat.tone}" t-att-data-action="stat.action">
+                        <span class="o_ql_icon"><i t-att-class="'fa ' + stat.icon"/></span>
+                        <span>
+                            <small><t t-esc="stat.label"/></small>
+                            <strong><t t-esc="stat.value"/></strong>
+                        </span>
+                    </button>
+                </t>
+            </div>
+
+            <div class="o_ql_dashboard_grid">
+                <section class="o_ql_panel o_ql_panel_wide">
+                    <div class="o_ql_panel_title">
+                        <h2>Trạng thái chăm sóc</h2>
+                        <button class="o_ql_text_button o_ql_dash_link" data-action="quan_ly_khach_hang_van_ban.action_khach_hang_ho_so">Danh sách</button>
+                    </div>
+                    <t t-foreach="data.stateBars" t-as="bar">
+                        <div class="o_ql_bar_row">
+                            <div>
+                                <strong><t t-esc="bar.label"/></strong>
+                                <span><t t-esc="bar.value"/> khách hàng</span>
+                            </div>
+                            <div class="o_ql_bar">
+                                <span t-attf-class="o_ql_bar_fill o_ql_tone_#{bar.tone}" t-att-style="'width:' + bar.percent + '%'"/>
+                            </div>
+                            <em><t t-esc="bar.percent"/>%</em>
+                        </div>
+                    </t>
+                </section>
+
+                <section class="o_ql_panel">
+                    <div class="o_ql_panel_title">
+                        <h2>Khách hàng mới</h2>
+                        <button class="o_ql_text_button o_ql_dash_link" data-action="quan_ly_khach_hang_van_ban.action_khach_hang_ho_so">Mở</button>
+                    </div>
+                    <div class="o_ql_customer_list">
+                        <t t-foreach="data.customers" t-as="customer">
+                            <article>
+                                <strong><t t-esc="customer.name"/></strong>
+                                <span><t t-esc="customer.ma_khach_hang || 'Chưa có mã'"/></span>
+                                <small><i class="fa fa-user-o"/> <t t-esc="customer.nhan_vien_phu_trach_id &amp;&amp; customer.nhan_vien_phu_trach_id[1] || 'Chưa phân công'"/></small>
+                            </article>
+                        </t>
+                    </div>
+                </section>
+            </div>
+
+            <div class="o_ql_dashboard_grid">
+                <section class="o_ql_panel">
+                    <div class="o_ql_panel_title">
+                        <h2>Văn bản đến khách hàng</h2>
+                        <button class="o_ql_text_button o_ql_dash_link" data-action="quan_ly_khach_hang_van_ban.action_van_ban_den_khach_hang">Mở</button>
+                    </div>
+                    <table class="o_ql_table">
+                        <tbody>
+                            <t t-foreach="data.incoming" t-as="doc">
+                                <tr>
+                                    <td><strong><t t-esc="doc.so_van_ban_den"/></strong></td>
+                                    <td><t t-esc="doc.ten_van_ban"/></td>
+                                    <td><t t-esc="doc.khach_hang_id &amp;&amp; doc.khach_hang_id[1] || ''"/></td>
+                                    <td><span class="o_ql_badge_soft"><t t-esc="doc.trang_thai_ho_so"/></span></td>
+                                </tr>
+                            </t>
+                        </tbody>
+                    </table>
+                </section>
+
+                <section class="o_ql_panel">
+                    <div class="o_ql_panel_title">
+                        <h2>Văn bản đi khách hàng</h2>
+                        <button class="o_ql_text_button o_ql_dash_link" data-action="quan_ly_khach_hang_van_ban.action_van_ban_di_khach_hang">Mở</button>
+                    </div>
+                    <table class="o_ql_table">
+                        <tbody>
+                            <t t-foreach="data.outgoing" t-as="doc">
+                                <tr>
+                                    <td><strong><t t-esc="doc.so_van_ban_di"/></strong></td>
+                                    <td><t t-esc="doc.ten_van_ban"/></td>
+                                    <td><t t-esc="doc.khach_hang_id &amp;&amp; doc.khach_hang_id[1] || ''"/></td>
+                                    <td><span class="o_ql_badge_soft"><t t-esc="doc.trang_thai_ho_so"/></span></td>
+                                </tr>
+                            </t>
+                        </tbody>
+                    </table>
+                </section>
+            </div>
+        </div>
+    </t>
+</templates>

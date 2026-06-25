@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_khach_hang_form_inherit_sales" model="ir.ui.view">
+        <field name="name">res.partner.khach.hang.form.inherit.sales</field>
+        <field name="model">res.partner</field>
+        <field name="inherit_id" ref="quan_ly_khach_hang_van_ban.view_khach_hang_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//div[@name='button_box']" position="inside">
+                <button name="action_view_don_hang"
+                        type="object"
+                        class="oe_stat_button"
+                        icon="fa-shopping-cart">
+                    <field name="so_don_hang" widget="statinfo" string="Đơn hàng"/>
+                </button>
+                <button name="action_view_thanh_toan"
+                        type="object"
+                        class="oe_stat_button"
+                        icon="fa-money">
+                    <field name="tong_cong_no" widget="statinfo" string="Công nợ"/>
+                </button>
+            </xpath>
+            <xpath expr="//field[@name='tong_so_van_ban']" position="after">
+                <field name="so_don_hang" readonly="1"/>
+                <field name="tong_gia_tri_don_hang" readonly="1"/>
+                <field name="tong_da_thanh_toan" readonly="1"/>
+                <field name="tong_cong_no" readonly="1"/>
+            </xpath>
+            <xpath expr="//page[field[@name='ghi_chu_ho_so']]" position="before">
+                <page string="Đơn hàng/Dịch vụ">
+                    <field name="don_hang_ids"
+                           context="{'default_khach_hang_id': active_id, 'default_nhan_vien_phu_trach_id': nhan_vien_phu_trach_id}">
+                        <tree editable="bottom">
+                            <field name="ma_don_hang" readonly="1"/>
+                            <field name="ten_don_hang"/>
+                            <field name="ngay_don"/>
+                            <field name="loai_don_hang"/>
+                            <field name="gia_tri"/>
+                            <field name="da_thanh_toan" readonly="1"/>
+                            <field name="con_no" readonly="1"/>
+                            <field name="trang_thai"/>
+                        </tree>
+                    </field>
+                </page>
+                <page string="Thanh toán/Công nợ">
+                    <field name="thanh_toan_ids" context="{'default_khach_hang_id': active_id}">
+                        <tree editable="bottom">
+                            <field name="name" readonly="1"/>
+                            <field name="don_hang_id"/>
+                            <field name="ngay_thanh_toan"/>
+                            <field name="so_tien"/>
+                            <field name="phuong_thuc"/>
+                            <field name="trang_thai"/>
+                        </tree>
+                    </field>
+                </page>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="view_khach_hang_tree_inherit_sales" model="ir.ui.view">
+        <field name="name">res.partner.khach.hang.tree.inherit.sales</field>
+        <field name="model">res.partner</field>
+        <field name="inherit_id" ref="quan_ly_khach_hang_van_ban.view_khach_hang_tree"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='tong_so_van_ban']" position="after">
+                <field name="so_don_hang"/>
+                <field name="tong_cong_no"/>
+            </xpath>
+        </field>
+    </record>
+</odoo>

@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_van_ban_den_form_inherit_khach_hang" model="ir.ui.view">
+        <field name="name">van.ban.den.form.inherit.khach.hang</field>
+        <field name="model">van_ban_den</field>
+        <field name="inherit_id" ref="quan_ly_van_ban.view_van_ban_den_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='loai_van_ban_id']" position="after">
+                <field name="loai_nguoi_nhan"/>
+                <field name="khach_hang_id" string="Người nhận" attrs="{'invisible': [('loai_nguoi_nhan', '!=', 'khach_hang')]}"/>
+                <field name="nhom_ho_so"/>
+            </xpath>
+            <xpath expr="//field[@name='nhan_vien_xu_ly_id']" position="after">
+                <field name="nhan_vien_phu_trach_id"/>
+                <field name="ngay_hieu_luc"/>
+                <field name="ngay_het_han"/>
+                <field name="trang_thai_ho_so"/>
+                <field name="tep_dinh_kem_ids" widget="many2many_binary"/>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="view_van_ban_den_tree_inherit_khach_hang" model="ir.ui.view">
+        <field name="name">van.ban.den.tree.inherit.khach.hang</field>
+        <field name="model">van_ban_den</field>
+        <field name="inherit_id" ref="quan_ly_van_ban.view_van_ban_den_tree"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='ten_van_ban']" position="after">
+                <field name="nguoi_nhan_phan_loai" string="Người nhận"/>
+                <field name="nhom_ho_so"/>
+                <field name="trang_thai_ho_so"/>
+            </xpath>
+            <xpath expr="//field[@name='nguoi_nhan_tong_hop']" position="replace"/>
+            <xpath expr="//field[@name='ai_ket_qua_nhanh']" position="attributes">
+                <attribute name="string">AI đề xuất</attribute>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="view_van_ban_den_search_khach_hang" model="ir.ui.view">
+        <field name="name">van.ban.den.search.khach.hang</field>
+        <field name="model">van_ban_den</field>
+        <field name="arch" type="xml">
+            <search string="Tìm văn bản đến">
+                <field name="ten_van_ban"/>
+                <field name="so_hieu_van_ban"/>
+                <field name="khach_hang_id" string="Người nhận"/>
+                <field name="nhan_vien_phu_trach_id"/>
+                <filter name="hop_dong" string="Hợp đồng" domain="[('nhom_ho_so','=','hop_dong')]"/>
+                <filter name="bao_gia" string="Báo giá" domain="[('nhom_ho_so','=','bao_gia')]"/>
+                <filter name="phap_ly" string="Pháp lý" domain="[('nhom_ho_so','=','phap_ly')]"/>
+                <filter name="dang_xu_ly" string="Đang xử lý" domain="[('trang_thai_ho_so','=','dang_xu_ly')]"/>
+                <group expand="0" string="Nhóm theo">
+                    <filter name="group_khach_hang" string="Người nhận khách hàng" context="{'group_by': 'khach_hang_id'}"/>
+                    <filter name="group_nhan_vien" string="Nhân viên phụ trách" context="{'group_by': 'nhan_vien_phu_trach_id'}"/>
+                    <filter name="group_nhom_ho_so" string="Nhóm hồ sơ" context="{'group_by': 'nhom_ho_so'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+
+    <record id="view_van_ban_di_form_inherit_khach_hang" model="ir.ui.view">
+        <field name="name">van.ban.di.form.inherit.khach.hang</field>
+        <field name="model">van_ban_di</field>
+        <field name="inherit_id" ref="quan_ly_van_ban.view_van_ban_di_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='loai_van_ban_id']" position="after">
+                <field name="loai_nguoi_nhan"/>
+                <field name="khach_hang_id" string="Người nhận" attrs="{'invisible': [('loai_nguoi_nhan', '!=', 'khach_hang')]}"/>
+                <field name="nhom_ho_so"/>
+            </xpath>
+            <xpath expr="//field[@name='noi_nhan']" position="after">
+                <field name="nhan_vien_phu_trach_id"/>
+                <field name="ngay_hieu_luc"/>
+                <field name="ngay_het_han"/>
+                <field name="trang_thai_ho_so"/>
+                <field name="tep_dinh_kem_ids" widget="many2many_binary"/>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="view_van_ban_di_tree_inherit_khach_hang" model="ir.ui.view">
+        <field name="name">van.ban.di.tree.inherit.khach.hang</field>
+        <field name="model">van_ban_di</field>
+        <field name="inherit_id" ref="quan_ly_van_ban.view_van_ban_di_tree"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='ten_van_ban']" position="after">
+                <field name="nguoi_nhan_phan_loai" string="Người nhận"/>
+                <field name="nhom_ho_so"/>
+                <field name="trang_thai_ho_so"/>
+            </xpath>
+            <xpath expr="//field[@name='nguoi_nhan_tong_hop']" position="replace"/>
+            <xpath expr="//field[@name='ai_ket_qua_nhanh']" position="attributes">
+                <attribute name="string">AI đề xuất</attribute>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="view_van_ban_di_search_khach_hang" model="ir.ui.view">
+        <field name="name">van.ban.di.search.khach.hang</field>
+        <field name="model">van_ban_di</field>
+        <field name="arch" type="xml">
+            <search string="Tìm văn bản đi">
+                <field name="ten_van_ban"/>
+                <field name="so_hieu_van_ban"/>
+                <field name="khach_hang_id" string="Người nhận"/>
+                <field name="nhan_vien_phu_trach_id"/>
+                <filter name="hop_dong" string="Hợp đồng" domain="[('nhom_ho_so','=','hop_dong')]"/>
+                <filter name="bao_gia" string="Báo giá" domain="[('nhom_ho_so','=','bao_gia')]"/>
+                <filter name="phap_ly" string="Pháp lý" domain="[('nhom_ho_so','=','phap_ly')]"/>
+                <filter name="dang_xu_ly" string="Đang xử lý" domain="[('trang_thai_ho_so','=','dang_xu_ly')]"/>
+                <group expand="0" string="Nhóm theo">
+                    <filter name="group_khach_hang" string="Người nhận khách hàng" context="{'group_by': 'khach_hang_id'}"/>
+                    <filter name="group_nhan_vien" string="Nhân viên phụ trách" context="{'group_by': 'nhan_vien_phu_trach_id'}"/>
+                    <filter name="group_nhom_ho_so" string="Nhóm hồ sơ" context="{'group_by': 'nhom_ho_so'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+
+    <record id="action_van_ban_den_khach_hang" model="ir.actions.act_window">
+        <field name="name">Văn bản đến khách hàng</field>
+        <field name="res_model">van_ban_den</field>
+        <field name="view_mode">tree,form</field>
+        <field name="domain">['|', ('khach_hang_id', '!=', False), ('khach_hang_nhan_ids', '!=', False)]</field>
+        <field name="search_view_id" ref="view_van_ban_den_search_khach_hang"/>
+    </record>
+
+    <record id="action_van_ban_di_khach_hang" model="ir.actions.act_window">
+        <field name="name">Văn bản đi khách hàng</field>
+        <field name="res_model">van_ban_di</field>
+        <field name="view_mode">tree,form</field>
+        <field name="domain">['|', ('khach_hang_id', '!=', False), ('khach_hang_nhan_ids', '!=', False)]</field>
+        <field name="search_view_id" ref="view_van_ban_di_search_khach_hang"/>
+    </record>
+</odoo>

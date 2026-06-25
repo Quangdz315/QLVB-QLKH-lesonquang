@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <menuitem id="menu_de_tai_4_root"
+              name="QLKH"
+              sequence="2"/>
+
+    <record id="menu_de_tai_4_root" model="ir.ui.menu">
+        <field name="name">QLKH</field>
+        <field name="parent_id" eval="False"/>
+        <field name="sequence">2</field>
+    </record>
+
+    <menuitem id="menu_khach_hang_ho_so"
+              name="Hồ sơ khách hàng"
+              parent="menu_de_tai_4_root"
+              action="action_khach_hang_ho_so"
+              sequence="1"/>
+
+    <menuitem id="menu_van_ban_den_khach_hang"
+              name="Văn bản đến khách hàng"
+              parent="menu_de_tai_4_root"
+              action="action_van_ban_den_khach_hang"
+              sequence="2"/>
+
+    <menuitem id="menu_van_ban_di_khach_hang"
+              name="Văn bản đi khách hàng"
+              parent="menu_de_tai_4_root"
+              action="action_van_ban_di_khach_hang"
+              sequence="3"/>
+</odoo>

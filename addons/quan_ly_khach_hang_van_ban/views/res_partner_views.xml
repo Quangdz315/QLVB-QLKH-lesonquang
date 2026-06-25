@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_khach_hang_tree" model="ir.ui.view">
+        <field name="name">res.partner.khach.hang.tree</field>
+        <field name="model">res.partner</field>
+        <field name="arch" type="xml">
+            <tree string="Hồ sơ khách hàng">
+                <field name="ma_khach_hang"/>
+                <field name="name"/>
+                <field name="phan_loai_khach_hang"/>
+                <field name="phone"/>
+                <field name="email"/>
+                <field name="nhan_vien_phu_trach_id"/>
+                <field name="trang_thai_cham_soc"/>
+                <field name="tong_so_van_ban"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="view_khach_hang_form" model="ir.ui.view">
+        <field name="name">res.partner.khach.hang.form</field>
+        <field name="model">res.partner</field>
+        <field name="arch" type="xml">
+            <form string="Hồ sơ khách hàng">
+                <header>
+                    <button name="action_ai_phan_tich_ho_so"
+                            string="Phân tích AI"
+                            type="object"
+                            class="oe_highlight"/>
+                    <button name="action_ai_cham_soc_khach_hang"
+                            string="AI Chăm sóc KH"
+                            type="object"/>
+                </header>
+                <sheet>
+                    <div class="oe_button_box" name="button_box">
+                        <button name="action_view_van_ban_den"
+                                type="object"
+                                class="oe_stat_button"
+                                icon="fa-inbox">
+                            <field name="so_van_ban_den" widget="statinfo" string="Văn bản đến"/>
+                        </button>
+                        <button name="action_view_van_ban_di"
+                                type="object"
+                                class="oe_stat_button"
+                                icon="fa-paper-plane">
+                            <field name="so_van_ban_di" widget="statinfo" string="Văn bản đi"/>
+                        </button>
+                    </div>
+
+                    <group>
+                        <group string="Thông tin khách hàng">
+                            <field name="is_khach_hang" invisible="1"/>
+                            <field name="ma_khach_hang" readonly="1"/>
+                            <field name="name" required="1"/>
+                            <field name="phan_loai_khach_hang"/>
+                            <field name="linh_vuc_hoat_dong"/>
+                            <field name="nguon_khach_hang"/>
+                        </group>
+                        <group string="Phụ trách">
+                            <field name="nhan_vien_phu_trach_id"/>
+                            <field name="muc_do_uu_tien"/>
+                            <field name="trang_thai_cham_soc"/>
+                            <field name="tong_so_van_ban" readonly="1"/>
+                        </group>
+                    </group>
+
+                    <group string="Liên hệ">
+                        <field name="phone"/>
+                        <field name="mobile"/>
+                        <field name="email"/>
+                        <field name="website"/>
+                        <field name="street"/>
+                        <field name="city"/>
+                    </group>
+
+                    <notebook>
+                        <page string="Văn bản đến">
+                            <field name="van_ban_den_ids" context="{'default_khach_hang_id': active_id}">
+                                <tree editable="bottom">
+                                    <field name="so_van_ban_den"/>
+                                    <field name="so_hieu_van_ban"/>
+                                    <field name="ten_van_ban"/>
+                                    <field name="nhom_ho_so"/>
+                                    <field name="loai_van_ban_id"/>
+                                    <field name="ngay_den"/>
+                                    <field name="trang_thai_ho_so"/>
+                                    <field name="nhan_vien_phu_trach_id"/>
+                                </tree>
+                            </field>
+                        </page>
+                        <page string="Văn bản đi">
+                            <field name="van_ban_di_ids" context="{'default_khach_hang_id': active_id}">
+                                <tree editable="bottom">
+                                    <field name="so_van_ban_di"/>
+                                    <field name="so_hieu_van_ban"/>
+                                    <field name="ten_van_ban"/>
+                                    <field name="nhom_ho_so"/>
+                                    <field name="loai_van_ban_id"/>
+                                    <field name="trang_thai_ho_so"/>
+                                    <field name="nhan_vien_phu_trach_id"/>
+                                </tree>
+                            </field>
+                        </page>
+                        <page string="Ghi chú">
+                            <field name="ghi_chu_ho_so"/>
+                        </page>
+                        <page string="Phân tích AI">
+                            <group>
+                                <field name="ai_phan_tich_luc" readonly="1"/>
+                                <field name="ai_nguon_phan_tich_ho_so" readonly="1"/>
+                            </group>
+                            <group string="Tóm tắt hồ sơ">
+                                <field name="ai_tom_tat_ho_so" readonly="1" nolabel="1"/>
+                            </group>
+                            <group string="Cảnh báo">
+                                <field name="ai_canh_bao" readonly="1" nolabel="1"/>
+                            </group>
+                            <group string="Gợi ý hành động">
+                                <field name="ai_goi_y_hanh_dong" readonly="1" nolabel="1"/>
+                            </group>
+                        </page>
+                        <page string="AI Chăm sóc KH">
+                            <group>
+                                <field name="ai_cham_soc_luc" readonly="1"/>
+                                <field name="ai_muc_do_cham_soc" readonly="1"/>
+                            </group>
+                            <group string="Tóm tắt chăm sóc">
+                                <field name="ai_cham_soc_tom_tat" readonly="1" nolabel="1"/>
+                            </group>
+                            <group string="Kịch bản liên hệ">
+                                <field name="ai_kich_ban_lien_he" readonly="1" nolabel="1"/>
+                            </group>
+                            <group string="Hành động đề xuất">
+                                <field name="ai_cham_soc_hanh_dong" readonly="1" nolabel="1"/>
+                            </group>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_khach_hang_search" model="ir.ui.view">
+        <field name="name">res.partner.khach.hang.search</field>
+        <field name="model">res.partner</field>
+        <field name="arch" type="xml">
+            <search string="Tìm hồ sơ khách hàng">
+                <field name="ma_khach_hang"/>
+                <field name="name"/>
+                <field name="phone"/>
+                <field name="email"/>
+                <field name="nhan_vien_phu_trach_id"/>
+                <filter name="uu_tien_cao" string="Ưu tiên cao" domain="[('muc_do_uu_tien','=','cao')]"/>
+                <filter name="da_ky_hop_dong" string="Đã ký hợp đồng" domain="[('trang_thai_cham_soc','=','da_ky_hop_dong')]"/>
+                <group expand="0" string="Nhóm theo">
+                    <filter name="group_nhan_vien" string="Nhân viên phụ trách" context="{'group_by': 'nhan_vien_phu_trach_id'}"/>
+                    <filter name="group_trang_thai" string="Trạng thái chăm sóc" context="{'group_by': 'trang_thai_cham_soc'}"/>
+                    <filter name="group_phan_loai" string="Phân loại" context="{'group_by': 'phan_loai_khach_hang'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+
+    <record id="action_khach_hang_ho_so" model="ir.actions.act_window">
+        <field name="name">Hồ sơ khách hàng</field>
+        <field name="res_model">res.partner</field>
+        <field name="view_mode">tree,form</field>
+        <field name="domain">[('is_khach_hang', '=', True)]</field>
+        <field name="context">{'default_is_khach_hang': True}</field>
+        <field name="search_view_id" ref="view_khach_hang_search"/>
+        <field name="view_ids" eval="[
+            (5, 0, 0),
+            (0, 0, {'view_mode': 'tree', 'view_id': ref('view_khach_hang_tree')}),
+            (0, 0, {'view_mode': 'form', 'view_id': ref('view_khach_hang_form')})
+        ]"/>
+    </record>
+</odoo>

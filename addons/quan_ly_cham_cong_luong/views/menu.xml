@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo><data>
+    <menuitem id="menu_cham_cong_luong_root" name="Chấm công &amp; Lương"
+              parent="nhan_su.menu_root" sequence="4"/>
+    <menuitem id="menu_hr_luong_co_ban" name="Cấu hình lương cơ bản"
+              parent="menu_cham_cong_luong_root" action="action_hr_luong_co_ban" sequence="1"/>
+    <menuitem id="menu_hr_cham_cong" name="Chấm công hằng ngày"
+              parent="menu_cham_cong_luong_root" action="action_hr_cham_cong" sequence="2"/>
+    <menuitem id="menu_hr_khen_thuong_ky_luat" name="Khen thưởng/Kỷ luật"
+              parent="menu_cham_cong_luong_root" action="action_hr_khen_thuong_ky_luat" sequence="3"/>
+    <menuitem id="menu_hr_phieu_luong" name="Phiếu lương tháng"
+              parent="menu_cham_cong_luong_root" action="action_hr_phieu_luong" sequence="4"/>
+</data></odoo>

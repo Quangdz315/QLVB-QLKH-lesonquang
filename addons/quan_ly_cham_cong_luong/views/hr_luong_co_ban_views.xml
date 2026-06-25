@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo><data>
+    <record id="view_hr_luong_co_ban_form" model="ir.ui.view">
+        <field name="name">hr_luong_co_ban.form</field>
+        <field name="model">hr_luong_co_ban</field>
+        <field name="arch" type="xml">
+            <form string="Cấu hình lương">
+                <sheet>
+                    <group>
+                        <group string="Nhân sự">
+                            <field name="nhan_vien_id"/>
+                            <field name="ma_dinh_danh" readonly="1"/>
+                            <field name="phong_ban_id" readonly="1"/>
+                            <field name="chuc_vu_id" readonly="1"/>
+                            <field name="hop_dong_id"/>
+                        </group>
+                        <group string="Lương và phụ cấp">
+                            <field name="luong_co_ban"/>
+                            <field name="phu_cap_an_trua"/>
+                            <field name="phu_cap_trach_nhiem"/>
+                        </group>
+                    </group>
+                    <group string="Ghi chú"><field name="ghi_chu"/></group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    <record id="view_hr_luong_co_ban_tree" model="ir.ui.view">
+        <field name="name">hr_luong_co_ban.tree</field>
+        <field name="model">hr_luong_co_ban</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="nhan_vien_id"/>
+                <field name="phong_ban_id"/>
+                <field name="chuc_vu_id" optional="hide"/>
+                <field name="hop_dong_id"/>
+                <field name="luong_co_ban"/>
+                <field name="phu_cap_an_trua"/>
+                <field name="phu_cap_trach_nhiem"/>
+            </tree>
+        </field>
+    </record>
+    <record id="view_hr_luong_co_ban_search" model="ir.ui.view">
+        <field name="name">hr_luong_co_ban.search</field>
+        <field name="model">hr_luong_co_ban</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="nhan_vien_id"/><field name="ma_dinh_danh"/>
+                <field name="phong_ban_id"/><field name="chuc_vu_id"/>
+                <group expand="0" string="Nhóm theo">
+                    <filter name="group_department" string="Phòng ban" context="{'group_by':'phong_ban_id'}"/>
+                    <filter name="group_job" string="Chức vụ" context="{'group_by':'chuc_vu_id'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+    <record id="action_hr_luong_co_ban" model="ir.actions.act_window">
+        <field name="name">Cấu hình lương cơ bản</field>
+        <field name="res_model">hr_luong_co_ban</field><field name="view_mode">tree,form</field>
+        <field name="search_view_id" ref="view_hr_luong_co_ban_search"/>
+    </record>
+</data></odoo>

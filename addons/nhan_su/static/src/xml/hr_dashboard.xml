@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates xml:space="preserve">
+    <t t-name="nhan_su.HrDashboard">
+        <div class="o_ql_dashboard"/>
+    </t>
+
+    <t t-name="nhan_su.HrDashboardContent">
+        <div class="o_ql_dashboard o_ql_hr_dashboard">
+            <div class="o_ql_dashboard_header">
+                <div>
+                    <p class="o_ql_kicker">QLNS</p>
+                    <h1>Dashboard Quản lý nhân sự</h1>
+                    <span>Hồ sơ, hợp đồng, nghỉ phép và tuyển dụng trong một màn hình.</span>
+                </div>
+                <button class="btn btn-primary o_ql_dash_link" data-action="nhan_su.action_nhan_vien">
+                    <i class="fa fa-plus"/> Thêm nhân viên
+                </button>
+            </div>
+
+            <div class="o_ql_stat_grid">
+                <t t-foreach="data.stats" t-as="stat">
+                    <button type="button" t-attf-class="o_ql_dashboard_card o_ql_tone_#{stat.tone}" t-att-data-action="stat.action">
+                        <span class="o_ql_icon"><i t-att-class="'fa ' + stat.icon"/></span>
+                        <span>
+                            <small><t t-esc="stat.label"/></small>
+                            <strong><t t-esc="stat.value"/></strong>
+                        </span>
+                    </button>
+                </t>
+            </div>
+
+            <div class="o_ql_dashboard_grid">
+                <section class="o_ql_panel o_ql_panel_wide">
+                    <div class="o_ql_panel_title">
+                        <h2>Tình trạng nhân sự</h2>
+                        <button class="o_ql_text_button o_ql_dash_link" data-action="nhan_su.action_nhan_vien">Xem tất cả</button>
+                    </div>
+                    <t t-foreach="data.statusBars" t-as="bar">
+                        <div class="o_ql_bar_row">
+                            <div>
+                                <strong><t t-esc="bar.label"/></strong>
+                                <span><t t-esc="bar.value"/> hồ sơ</span>
+                            </div>
+                            <div class="o_ql_bar">
+                                <span t-attf-class="o_ql_bar_fill o_ql_tone_#{bar.tone}" t-att-style="'width:' + bar.percent + '%'"/>
+                            </div>
+                            <em><t t-esc="bar.percent"/>%</em>
+                        </div>
+                    </t>
+                </section>
+
+                <section class="o_ql_panel">
+                    <div class="o_ql_panel_title">
+                        <h2>Phòng ban</h2>
+                        <button class="o_ql_text_button o_ql_dash_link" data-action="nhan_su.action_phong_ban">Mở</button>
+                    </div>
+                    <div class="o_ql_chip_list">
+                        <t t-foreach="data.departments" t-as="dept">
+                            <span><t t-esc="dept.ten_phong_ban"/></span>
+                        </t>
+                        <t t-if="!data.departments.length">
+                            <span>Chưa có phòng ban</span>
+                        </t>
+                    </div>
+                </section>
+            </div>
+
+            <section class="o_ql_panel">
+                <div class="o_ql_panel_title">
+                    <h2>Nhân viên mới cập nhật</h2>
+                    <button class="o_ql_text_button o_ql_dash_link" data-action="nhan_su.action_nhan_vien">Danh sách</button>
+                </div>
+                <div class="o_ql_employee_cards">
+                    <t t-foreach="data.recentEmployees" t-as="employee">
+                        <article class="o_ql_employee_card">
+                            <img t-if="employee.image_1920" t-att-src="'data:image/png;base64,' + employee.image_1920" alt="Ảnh"/>
+                            <div t-if="!employee.image_1920" class="o_ql_avatar_placeholder"><i class="fa fa-user"/></div>
+                            <h3><t t-esc="employee.ho_ten"/></h3>
+                            <span class="o_ql_badge"><t t-esc="employee.ma_dinh_danh"/></span>
+                            <p><i class="fa fa-briefcase"/> <t t-esc="employee.chuc_vu_id &amp;&amp; employee.chuc_vu_id[1] || 'Chưa có chức vụ'"/></p>
+                            <p><i class="fa fa-building-o"/> <t t-esc="employee.phong_ban_id &amp;&amp; employee.phong_ban_id[1] || 'Chưa có phòng ban'"/></p>
+                            <p><i class="fa fa-envelope-o"/> <t t-esc="employee.email_cong_ty || 'Chưa có email'"/></p>
+                        </article>
+                    </t>
+                </div>
+            </section>
+
+            <div class="o_ql_dashboard_grid">
+                <section class="o_ql_panel">
+                    <div class="o_ql_panel_title">
+                        <h2>Hợp đồng gần đây</h2>
+                        <button class="o_ql_text_button o_ql_dash_link" data-action="nhan_su.action_hop_dong_lao_dong">Mở</button>
+                    </div>
+                    <table class="o_ql_table">
+                        <tbody>
+                            <t t-foreach="data.contracts" t-as="contract">
+                                <tr>
+                                    <td><strong><t t-esc="contract.ma_hop_dong"/></strong></td>
+                                    <td><t t-esc="contract.nhan_vien_id &amp;&amp; contract.nhan_vien_id[1] || ''"/></td>
+                                    <td><span class="o_ql_badge_soft"><t t-esc="contract.trang_thai"/></span></td>
+                                </tr>
+                            </t>
+                        </tbody>
+                    </table>
+                </section>
+
+                <section class="o_ql_panel">
+                    <div class="o_ql_panel_title">
+                        <h2>Ứng viên mới</h2>
+                        <button class="o_ql_text_button o_ql_dash_link" data-action="nhan_su.action_ung_vien_tuyen_dung">Mở</button>
+                    </div>
+                    <table class="o_ql_table">
+                        <tbody>
+                            <t t-foreach="data.candidates" t-as="candidate">
+                                <tr>
+                                    <td><strong><t t-esc="candidate.ho_ten"/></strong></td>
+                                    <td><t t-esc="candidate.email || candidate.so_dien_thoai || ''"/></td>
+                                    <td><span class="o_ql_badge_soft"><t t-esc="candidate.trang_thai"/></span></td>
+                                </tr>
+                            </t>
+                        </tbody>
+                    </table>
+                </section>
+            </div>
+        </div>
+    </t>
+</templates>

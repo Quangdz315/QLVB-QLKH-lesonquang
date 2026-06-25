@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="seq_res_partner_khach_hang" model="ir.sequence">
+        <field name="name">Mã khách hàng</field>
+        <field name="code">res.partner.khach_hang</field>
+        <field name="prefix">KH</field>
+        <field name="padding">5</field>
+        <field name="number_next">1</field>
+        <field name="number_increment">1</field>
+    </record>
+    <record id="seq_qlkh_don_hang" model="ir.sequence">
+        <field name="name">Mã đơn hàng khách hàng</field>
+        <field name="code">qlkh.don_hang</field>
+        <field name="prefix">DH%(year)s</field>
+        <field name="padding">4</field>
+    </record>
+    <record id="seq_qlkh_thanh_toan" model="ir.sequence">
+        <field name="name">Mã thanh toán khách hàng</field>
+        <field name="code">qlkh.thanh_toan</field>
+        <field name="prefix">TT%(year)s</field>
+        <field name="padding">4</field>
+    </record>
+    <record id="seq_qlkh_cham_soc" model="ir.sequence">
+        <field name="name">Mã chăm sóc khách hàng</field>
+        <field name="code">qlkh.cham_soc</field>
+        <field name="prefix">CS%(year)s</field>
+        <field name="padding">4</field>
+    </record>
+</odoo>

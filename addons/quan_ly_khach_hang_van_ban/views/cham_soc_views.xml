@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_qlkh_cham_soc_tree" model="ir.ui.view">
+        <field name="name">qlkh.cham_soc.tree</field>
+        <field name="model">qlkh.cham_soc</field>
+        <field name="arch" type="xml">
+            <tree decoration-danger="muc_dich == 'nhac_cong_no' and trang_thai != 'hoan_thanh'"
+                  decoration-warning="trang_thai == 'can_goi_lai'"
+                  decoration-success="trang_thai == 'hoan_thanh'"
+                  decoration-muted="trang_thai == 'huy'">
+                <field name="name"/>
+                <field name="khach_hang_id"/>
+                <field name="nhan_vien_phu_trach_id"/>
+                <field name="ngay_cham_soc"/>
+                <field name="kenh"/>
+                <field name="muc_dich"/>
+                <field name="don_hang_id"/>
+                <field name="ngay_hen_tiep_theo"/>
+                <field name="trang_thai" widget="badge"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="view_qlkh_cham_soc_form" model="ir.ui.view">
+        <field name="name">qlkh.cham_soc.form</field>
+        <field name="model">qlkh.cham_soc</field>
+        <field name="arch" type="xml">
+            <form string="Chăm sóc khách hàng">
+                <header>
+                    <button name="action_ai_goi_y_tin_nhan"
+                            type="object"
+                            string="AI gợi ý tin nhắn"
+                            class="oe_highlight"/>
+                    <button name="action_da_lien_he" type="object" string="Đã liên hệ"
+                            attrs="{'invisible': [('trang_thai', 'not in', ['nhap', 'can_goi_lai'])]}"/>
+                    <button name="action_can_goi_lai" type="object" string="Cần gọi lại"
+                            attrs="{'invisible': [('trang_thai', 'in', ['can_goi_lai', 'hoan_thanh', 'huy'])]}"/>
+                    <button name="action_hoan_thanh" type="object" string="Hoàn thành"
+                            attrs="{'invisible': [('trang_thai', 'in', ['hoan_thanh', 'huy'])]}"/>
+                    <button name="action_huy" type="object" string="Hủy"
+                            attrs="{'invisible': [('trang_thai', '=', 'huy')]}"/>
+                    <button name="action_dat_nhap" type="object" string="Đưa về nháp"
+                            attrs="{'invisible': [('trang_thai', '=', 'nhap')]}"/>
+                    <field name="trang_thai" widget="statusbar"
+                           statusbar_visible="nhap,da_lien_he,can_goi_lai,hoan_thanh"/>
+                </header>
+                <sheet>
+                    <div class="oe_title">
+                        <label for="name"/>
+                        <h1><field name="name" readonly="1"/></h1>
+                    </div>
+                    <group>
+                        <group string="Thông tin chăm sóc">
+                            <field name="khach_hang_id"/>
+                            <field name="nhan_vien_phu_trach_id"/>
+                            <field name="ngay_cham_soc"/>
+                            <field name="kenh"/>
+                            <field name="muc_dich"/>
+                        </group>
+                        <group string="Liên quan">
+                            <field name="don_hang_id"/>
+                            <field name="ngay_hen_tiep_theo"/>
+                        </group>
+                    </group>
+                    <notebook>
+                        <page string="Nội dung">
+                            <group>
+                                <field name="noi_dung" placeholder="Ghi nội dung đã trao đổi với khách hàng..."/>
+                                <field name="ket_qua" placeholder="Kết quả sau khi liên hệ..."/>
+                            </group>
+                        </page>
+                        <page string="AI gợi ý tin nhắn">
+                            <field name="tin_nhan_goi_y"
+                                   nolabel="1"
+                                   placeholder="Bấm AI gợi ý tin nhắn để tạo nội dung gửi khách hàng."/>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_qlkh_cham_soc_search" model="ir.ui.view">
+        <field name="name">qlkh.cham_soc.search</field>
+        <field name="model">qlkh.cham_soc</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="name"/>
+                <field name="khach_hang_id"/>
+                <field name="nhan_vien_phu_trach_id"/>
+                <field name="noi_dung"/>
+                <filter name="can_goi_lai" string="Cần gọi lại" domain="[('trang_thai','=','can_goi_lai')]"/>
+                <filter name="chua_hoan_thanh" string="Chưa hoàn thành"
+                        domain="[('trang_thai','not in',['hoan_thanh','huy'])]"/>
+                <filter name="nhac_cong_no" string="Nhắc công nợ" domain="[('muc_dich','=','nhac_cong_no')]"/>
+                <filter name="hom_nay" string="Hẹn hôm nay"
+                        domain="[('ngay_hen_tiep_theo','&gt;=', context_today().strftime('%Y-%m-%d 00:00:00')), ('ngay_hen_tiep_theo','&lt;=', context_today().strftime('%Y-%m-%d 23:59:59'))]"/>
+                <group expand="0" string="Nhóm theo">
+                    <filter name="group_khach_hang" string="Khách hàng" context="{'group_by': 'khach_hang_id'}"/>
+                    <filter name="group_nhan_vien" string="Nhân viên phụ trách" context="{'group_by': 'nhan_vien_phu_trach_id'}"/>
+                    <filter name="group_kenh" string="Kênh liên hệ" context="{'group_by': 'kenh'}"/>
+                    <filter name="group_muc_dich" string="Mục đích" context="{'group_by': 'muc_dich'}"/>
+                    <filter name="group_trang_thai" string="Trạng thái" context="{'group_by': 'trang_thai'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+
+    <record id="action_qlkh_cham_soc" model="ir.actions.act_window">
+        <field name="name">Chăm sóc khách hàng</field>
+        <field name="res_model">qlkh.cham_soc</field>
+        <field name="view_mode">tree,form</field>
+        <field name="search_view_id" ref="view_qlkh_cham_soc_search"/>
+    </record>
+
+    <menuitem id="menu_qlkh_cham_soc"
+              name="Chăm sóc khách hàng"
+              parent="menu_de_tai_4_root"
+              action="action_qlkh_cham_soc"
+              sequence="6"/>
+</odoo>

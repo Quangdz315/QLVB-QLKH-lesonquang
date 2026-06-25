@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo><data>
+    <record id="view_danh_gia_nhan_vien_tree" model="ir.ui.view">
+        <field name="name">danh_gia_nhan_vien.tree</field><field name="model">danh_gia_nhan_vien</field>
+        <field name="arch" type="xml"><tree decoration-success="xep_loai in ('xuat_sac','tot')" decoration-warning="xep_loai == 'trung_binh'" decoration-danger="xep_loai == 'yeu'">
+            <field name="nam"/><field name="ky_danh_gia"/><field name="nhan_vien_id"/><field name="phong_ban_id"/>
+            <field name="diem_kpi"/><field name="diem_ky_luat"/><field name="diem_thai_do"/><field name="diem_ky_nang"/>
+            <field name="diem_trung_binh"/><field name="xep_loai" widget="badge"/><field name="trang_thai" widget="badge"/>
+        </tree></field>
+    </record>
+    <record id="view_danh_gia_nhan_vien_form" model="ir.ui.view">
+        <field name="name">danh_gia_nhan_vien.form</field><field name="model">danh_gia_nhan_vien</field>
+        <field name="arch" type="xml"><form string="Đánh giá nhân viên">
+            <header>
+                <button name="action_xac_nhan" string="Xác nhận" type="object" class="oe_highlight" attrs="{'invisible': [('trang_thai', '!=', 'nhap')]}"/>
+                <button name="action_huy" string="Hủy" type="object" attrs="{'invisible': [('trang_thai', '=', 'huy')]}"/>
+                <button name="action_dat_nhap" string="Đặt về nháp" type="object" attrs="{'invisible': [('trang_thai', '!=', 'huy')]}"/>
+                <field name="trang_thai" widget="statusbar" statusbar_visible="nhap,xac_nhan"/>
+            </header>
+            <sheet>
+                <div class="oe_title"><h1><field name="ten_danh_gia" readonly="1"/></h1></div>
+                <group>
+                    <group string="Kỳ đánh giá"><field name="nhan_vien_id"/><field name="phong_ban_id" readonly="1"/><field name="chuc_vu_id" readonly="1"/><field name="nguoi_danh_gia_id"/><field name="ky_danh_gia"/><field name="nam"/><field name="ngay_danh_gia"/></group>
+                    <group string="Điểm số"><field name="diem_kpi"/><field name="diem_ky_luat"/><field name="diem_thai_do"/><field name="diem_ky_nang"/><field name="diem_trung_binh" readonly="1"/><field name="xep_loai" readonly="1"/></group>
+                </group>
+                <group><field name="nhan_xet"/><field name="muc_tieu"/></group>
+            </sheet>
+        </form></field>
+    </record>
+    <record id="view_danh_gia_nhan_vien_search" model="ir.ui.view">
+        <field name="name">danh_gia_nhan_vien.search</field><field name="model">danh_gia_nhan_vien</field>
+        <field name="arch" type="xml"><search>
+            <field name="nhan_vien_id"/><field name="phong_ban_id"/><field name="ky_danh_gia"/><field name="nam"/><field name="xep_loai"/><field name="trang_thai"/>
+            <filter name="xac_nhan" string="Đã xác nhận" domain="[('trang_thai','=','xac_nhan')]"/>
+            <filter name="xuat_sac" string="Xuất sắc" domain="[('xep_loai','=','xuat_sac')]"/>
+            <group expand="0" string="Nhóm theo">
+                <filter name="group_nhan_vien" string="Nhân viên" context="{'group_by':'nhan_vien_id'}"/>
+                <filter name="group_phong_ban" string="Phòng ban" context="{'group_by':'phong_ban_id'}"/>
+                <filter name="group_ky" string="Kỳ" context="{'group_by':'ky_danh_gia'}"/>
+                <filter name="group_nam" string="Năm" context="{'group_by':'nam'}"/>
+                <filter name="group_xep_loai" string="Xếp loại" context="{'group_by':'xep_loai'}"/>
+            </group>
+        </search></field>
+    </record>
+    <record id="action_danh_gia_nhan_vien" model="ir.actions.act_window"><field name="name">Đánh giá nhân viên</field><field name="res_model">danh_gia_nhan_vien</field><field name="view_mode">tree,form</field><field name="search_view_id" ref="view_danh_gia_nhan_vien_search"/></record>
+</data></odoo>

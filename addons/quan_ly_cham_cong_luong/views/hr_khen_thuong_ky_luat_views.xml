@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo><data>
+    <record id="view_hr_khen_thuong_ky_luat_form" model="ir.ui.view">
+        <field name="name">hr_khen_thuong_ky_luat.form</field><field name="model">hr_khen_thuong_ky_luat</field>
+        <field name="arch" type="xml"><form string="Khen thưởng/Kỷ luật"><sheet><group>
+            <group string="Nhân sự"><field name="nhan_vien_id"/><field name="phong_ban_id" readonly="1"/><field name="chuc_vu_id" readonly="1"/></group>
+            <group string="Quyết định"><field name="loai_quyet_dinh"/><field name="so_tien"/><field name="ngay_ap_dung"/></group>
+        </group><group string="Nội dung"><field name="ghi_chu"/></group></sheet></form></field>
+    </record>
+    <record id="view_hr_khen_thuong_ky_luat_tree" model="ir.ui.view">
+        <field name="name">hr_khen_thuong_ky_luat.tree</field><field name="model">hr_khen_thuong_ky_luat</field>
+        <field name="arch" type="xml"><tree>
+            <field name="ngay_ap_dung"/><field name="nhan_vien_id"/><field name="phong_ban_id"/>
+            <field name="loai_quyet_dinh" widget="badge"/><field name="so_tien"/>
+        </tree></field>
+    </record>
+    <record id="view_hr_khen_thuong_ky_luat_search" model="ir.ui.view">
+        <field name="name">hr_khen_thuong_ky_luat.search</field><field name="model">hr_khen_thuong_ky_luat</field>
+        <field name="arch" type="xml"><search>
+            <field name="nhan_vien_id"/><field name="phong_ban_id"/><field name="loai_quyet_dinh"/><field name="ngay_ap_dung"/>
+            <filter name="thuong" string="Khen thưởng" domain="[('loai_quyet_dinh','=','thuong')]"/>
+            <filter name="ky_luat" string="Kỷ luật" domain="[('loai_quyet_dinh','=','ky_luat')]"/>
+            <group expand="0" string="Nhóm theo">
+                <filter name="group_nhan_vien" string="Nhân viên" context="{'group_by':'nhan_vien_id'}"/>
+                <filter name="group_phong_ban" string="Phòng ban" context="{'group_by':'phong_ban_id'}"/>
+                <filter name="group_loai" string="Loại quyết định" context="{'group_by':'loai_quyet_dinh'}"/>
+            </group>
+        </search></field>
+    </record>
+    <record id="action_hr_khen_thuong_ky_luat" model="ir.actions.act_window">
+        <field name="name">Khen thưởng/Kỷ luật</field><field name="res_model">hr_khen_thuong_ky_luat</field>
+        <field name="view_mode">tree,form</field><field name="search_view_id" ref="view_hr_khen_thuong_ky_luat_search"/>
+    </record>
+</data></odoo>

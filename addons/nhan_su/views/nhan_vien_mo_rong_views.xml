@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo><data>
+    <record id="view_nhan_vien_form_mo_rong_quan_tri" model="ir.ui.view">
+        <field name="name">nhan_vien.form.mo.rong.quan.tri</field>
+        <field name="model">nhan_vien</field>
+        <field name="inherit_id" ref="nhan_su.view_nhan_vien_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//div[@name='button_box']" position="inside">
+                <button name="action_view_nghi_phep" type="object" class="oe_stat_button" icon="fa-calendar-check-o">
+                    <field name="so_nghi_phep" widget="statinfo" string="Nghỉ phép"/>
+                </button>
+                <button name="action_view_dao_tao_bang_cap" type="object" class="oe_stat_button" icon="fa-graduation-cap">
+                    <field name="so_dao_tao" widget="statinfo" string="Đào tạo"/>
+                </button>
+                <button name="action_view_danh_gia" type="object" class="oe_stat_button" icon="fa-star-half-o">
+                    <field name="so_danh_gia" widget="statinfo" string="Đánh giá"/>
+                </button>
+            </xpath>
+            <xpath expr="//notebook" position="inside">
+                <page string="Nghỉ phép">
+                    <field name="nghi_phep_ids" context="{'default_nhan_vien_id': active_id}">
+                        <tree editable="bottom">
+                            <field name="ma_don" readonly="1"/>
+                            <field name="loai_nghi"/>
+                            <field name="ngay_bat_dau"/>
+                            <field name="ngay_ket_thuc"/>
+                            <field name="so_ngay" readonly="1"/>
+                            <field name="trang_thai"/>
+                        </tree>
+                    </field>
+                </page>
+                <page string="Đào tạo &amp; Bằng cấp">
+                    <field name="dao_tao_bang_cap_ids" context="{'default_nhan_vien_id': active_id}">
+                        <tree editable="bottom">
+                            <field name="loai"/>
+                            <field name="ten_chuong_trinh"/>
+                            <field name="don_vi_dao_tao"/>
+                            <field name="ngay_ket_thuc"/>
+                            <field name="ngay_het_han"/>
+                            <field name="trang_thai"/>
+                        </tree>
+                    </field>
+                </page>
+                <page string="Đánh giá">
+                    <field name="danh_gia_ids" context="{'default_nhan_vien_id': active_id}">
+                        <tree editable="bottom">
+                            <field name="ky_danh_gia"/>
+                            <field name="nam"/>
+                            <field name="diem_kpi"/>
+                            <field name="diem_ky_luat"/>
+                            <field name="diem_thai_do"/>
+                            <field name="diem_ky_nang"/>
+                            <field name="diem_trung_binh" readonly="1"/>
+                            <field name="xep_loai" readonly="1"/>
+                            <field name="trang_thai"/>
+                        </tree>
+                    </field>
+                </page>
+            </xpath>
+        </field>
+    </record>
+</data></odoo>

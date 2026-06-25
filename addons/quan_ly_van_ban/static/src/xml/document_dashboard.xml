@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates xml:space="preserve">
+    <t t-name="quan_ly_van_ban.DocumentDashboard">
+        <div class="o_ql_dashboard"/>
+    </t>
+
+    <t t-name="quan_ly_van_ban.DocumentDashboardContent">
+        <div class="o_ql_dashboard o_ql_document_dashboard">
+            <div class="o_ql_dashboard_header">
+                <div>
+                    <p class="o_ql_kicker">QLVB</p>
+                    <h1>Dashboard Quản lý văn bản</h1>
+                    <span>Quản lý văn bản đến, văn bản đi, nội bộ, đối tác và cảnh báo AI.</span>
+                </div>
+                <div class="o_ql_header_actions">
+                    <button class="btn btn-secondary o_ql_dash_link" data-action="quan_ly_van_ban.action_van_ban_den">
+                        <i class="fa fa-inbox"/> Văn bản đến
+                    </button>
+                    <button class="btn btn-primary o_ql_dash_link" data-action="quan_ly_van_ban.action_van_ban_di">
+                        <i class="fa fa-paper-plane"/> Văn bản đi
+                    </button>
+                </div>
+            </div>
+
+            <div class="o_ql_stat_grid">
+                <t t-foreach="data.stats" t-as="stat">
+                    <button type="button" t-attf-class="o_ql_dashboard_card o_ql_tone_#{stat.tone}" t-att-data-action="stat.action">
+                        <span class="o_ql_icon"><i t-att-class="'fa ' + stat.icon"/></span>
+                        <span>
+                            <small><t t-esc="stat.label"/></small>
+                            <strong><t t-esc="stat.value"/></strong>
+                        </span>
+                    </button>
+                </t>
+            </div>
+
+            <div class="o_ql_dashboard_grid">
+                <section class="o_ql_panel o_ql_panel_wide">
+                    <div class="o_ql_panel_title">
+                        <h2>Cơ cấu văn bản</h2>
+                        <button class="o_ql_text_button o_ql_dash_link" data-action="quan_ly_van_ban.action_van_ban_di">Chi tiết</button>
+                    </div>
+                    <t t-foreach="data.groupBars" t-as="bar">
+                        <div class="o_ql_bar_row">
+                            <div>
+                                <strong><t t-esc="bar.label"/></strong>
+                                <span><t t-esc="bar.value"/> văn bản</span>
+                            </div>
+                            <div class="o_ql_bar">
+                                <span t-attf-class="o_ql_bar_fill o_ql_tone_#{bar.tone}" t-att-style="'width:' + bar.percent + '%'"/>
+                            </div>
+                            <em><t t-esc="bar.percent"/>%</em>
+                        </div>
+                    </t>
+                </section>
+
+                <section class="o_ql_panel">
+                    <div class="o_ql_panel_title">
+                        <h2>Luồng xử lý</h2>
+                    </div>
+                    <div class="o_ql_flow">
+                        <span><i class="fa fa-pencil-square-o"/> Soạn thảo</span>
+                        <i class="fa fa-angle-right"/>
+                        <span><i class="fa fa-magic"/> AI gợi ý</span>
+                        <i class="fa fa-angle-right"/>
+                        <span><i class="fa fa-folder-open-o"/> Lưu hồ sơ</span>
+                    </div>
+                </section>
+            </div>
+
+            <div class="o_ql_dashboard_grid">
+                <section class="o_ql_panel">
+                    <div class="o_ql_panel_title">
+                        <h2>Văn bản đến gần đây</h2>
+                        <button class="o_ql_text_button o_ql_dash_link" data-action="quan_ly_van_ban.action_van_ban_den">Mở</button>
+                    </div>
+                    <table class="o_ql_table">
+                        <tbody>
+                            <t t-foreach="data.recentIncoming" t-as="doc">
+                                <tr>
+                                    <td><strong><t t-esc="doc.so_van_ban_den"/></strong></td>
+                                    <td><t t-esc="doc.ten_van_ban"/></td>
+                                    <td><t t-esc="doc.nguon_gui_tong_hop || ''"/></td>
+                                    <td><span class="o_ql_badge_soft"><t t-esc="doc.ai_ket_qua_nhanh || doc.nhom_van_ban"/></span></td>
+                                </tr>
+                            </t>
+                        </tbody>
+                    </table>
+                </section>
+
+                <section class="o_ql_panel">
+                    <div class="o_ql_panel_title">
+                        <h2>Văn bản đi gần đây</h2>
+                        <button class="o_ql_text_button o_ql_dash_link" data-action="quan_ly_van_ban.action_van_ban_di">Mở</button>
+                    </div>
+                    <table class="o_ql_table">
+                        <tbody>
+                            <t t-foreach="data.recentOutgoing" t-as="doc">
+                                <tr>
+                                    <td><strong><t t-esc="doc.so_van_ban_di"/></strong></td>
+                                    <td><t t-esc="doc.ten_van_ban"/></td>
+                                    <td><t t-esc="doc.nguoi_nhan_tong_hop || ''"/></td>
+                                    <td><span class="o_ql_badge_soft"><t t-esc="doc.ai_ket_qua_nhanh || doc.nhom_van_ban"/></span></td>
+                                </tr>
+                            </t>
+                        </tbody>
+                    </table>
+                </section>
+            </div>
+        </div>
+    </t>
+</templates>

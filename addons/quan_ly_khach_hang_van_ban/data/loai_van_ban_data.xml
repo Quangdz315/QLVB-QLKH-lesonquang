@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo noupdate="1">
+    <record id="loai_van_ban_hop_dong" model="loai_van_ban">
+        <field name="name">Hợp đồng khách hàng</field>
+    </record>
+    <record id="loai_van_ban_bao_gia" model="loai_van_ban">
+        <field name="name">Báo giá</field>
+    </record>
+    <record id="loai_van_ban_phap_ly" model="loai_van_ban">
+        <field name="name">Tài liệu pháp lý</field>
+    </record>
+    <record id="loai_van_ban_bien_ban" model="loai_van_ban">
+        <field name="name">Biên bản làm việc</field>
+    </record>
+</odoo>
