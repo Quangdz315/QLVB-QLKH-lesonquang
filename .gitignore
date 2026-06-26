@@ -16,6 +16,7 @@ __pycache__/
 # hg stuff
 *.orig
 status
+*Zone.Identifier
 # odoo filestore
 odoo/filestore
 # maintenance migration scripts
