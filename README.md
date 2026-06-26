@@ -70,10 +70,12 @@
 ## 🏗️ 3. Kiến trúc hệ thống 
 ---
 
-<img width="950" height="600" alt="image" src="https://github.com/user-attachments/assets/defa47a9-a18e-4a90-be35-b073fed400a7" />
+<p align="center">
+  <img src="https://raw.githubusercontent.com/Quangdz315/QLVB-QLKH-lesonquang/main/imgs/system_architecture.svg" alt="Kiến trúc hệ thống QLNS QLVB QLKH trên Odoo" width="950"/>
+</p>
 
 
-Hệ thống ERP được xây dựng trên nền tảng **Odoo**, theo mô hình **Client – Server mở rộng**, cho phép tích hợp linh hoạt với các dịch vụ bên ngoài như OCR, chữ ký số và AI.
+Hệ thống ERP được xây dựng trên nền tảng **Odoo**, theo mô hình **Client – Server mở rộng**, tích hợp các phân hệ quản lý nhân sự, văn bản, khách hàng, ứng dụng ngoài và dịch vụ AI.
 
 ### Các thành phần chính
 
@@ -83,45 +85,27 @@ Hệ thống ERP được xây dựng trên nền tảng **Odoo**, theo mô hìn
 * **Odoo Server**
   Là trung tâm xử lý nghiệp vụ, triển khai các module ERP như:
 
-  * HRM (Quản lý nhân sự)
-  * Customer/CRM (Quản lý khách hàng, hợp đồng)
-  * Document (Quản lý văn bản, phê duyệt, ký số)
+  * QLNS - Quản lý nhân sự (`nhan_su`)
+  * Chấm công và lương (`quan_ly_cham_cong_luong`)
+  * QLVB - Quản lý văn bản (`quan_ly_van_ban`)
+  * QLKH - Quản lý khách hàng và văn bản (`quan_ly_khach_hang_van_ban`)
 
 * **PostgreSQL Database**
   Lưu trữ toàn bộ dữ liệu nghiệp vụ tập trung, đảm bảo đồng bộ giữa các module.
 
-* **File Storage**
-  Lưu trữ tệp đính kèm (hợp đồng, văn bản, chữ ký), có thể sử dụng filesystem hoặc object storage.
-
 * **Integration Layer**
-  Kết nối hệ thống với các dịch vụ bên ngoài thông qua REST API, Webhook hoặc RPC.
+  Kết nối ứng dụng bên ngoài chạy ở cổng 8070 với Odoo thông qua XML-RPC.
 
 * **External Services & AI**
 
-  * OCR: Trích xuất nội dung từ tài liệu scan
-  * Digital Signature (PKI): Ký số và xác thực văn bản
-  * Notification: Gửi email/thông báo sự kiện
-  * Cloud Platform (tùy chọn): Lưu trữ và mở rộng dịch vụ
+  * Google Gemini API: hỗ trợ phân tích văn bản, tóm tắt, gợi ý chăm sóc khách hàng và trợ lý AI.
+  * Cấu hình API thông qua biến môi trường hoặc tham số hệ thống Odoo.
 
 ### Luồng xử lý tổng quát
 
-**Client → Odoo Server → Database / File Storage → External Services**
+**Client / External App → Odoo Server → Custom Addons → PostgreSQL / Gemini API**
 
 Kiến trúc này giúp hệ thống **dễ mở rộng, dễ tích hợp và phù hợp cho cả học tập lẫn triển khai thực tế**.
-
----
-
----
-
-## 🔄 End-to-End Flow: Số hóa hồ sơ khách hàng
-<p align="center">
-  <img src="docs/business flow/Nhom4_BusinessFlow_HeThongERPQuanLyKhachHang&VanBan.jpg" alt="End-to-End Business Flow - Digital Customer File" width="90%">
-</p>
-
-Luồng **Số hóa hồ sơ khách hàng** được lựa chọn làm luồng nghiệp vụ End-to-End vì thể hiện rõ nhất sự tích hợp giữa ba module cốt lõi của hệ thống ERP: **Nhân sự (HRM) – Quản lý khách hàng – Quản lý văn bản**.
-
-Luồng bắt đầu từ tạo hồ sơ khách hàng và hợp đồng, chuyển sang xử lý văn bản pháp lý, phê duyệt – ký điện tử và kết thúc bằng việc lưu trữ, liên kết hồ sơ số hóa. Trong toàn bộ quy trình, **HRM đóng vai trò dữ liệu gốc** để gán người phụ trách, người duyệt và người ký; hệ thống hỗ trợ **tự động hóa workflow** và **tích hợp AI/API** (OCR, chữ ký số, thông báo).
-
 
 ---
 
