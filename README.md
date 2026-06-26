@@ -133,105 +133,124 @@ Hệ thống được thiết kế với giao diện trực quan, thống nhất
 
 ---
 
-### 📊 1. Dashboard tổng quan
+### 👥 1. Phân hệ quản lý nhân sự
 
 <p align="center">
-  <img src="https://github.com/user-attachments/assets/4feafa52-32d1-481d-a300-e7ed13a1ec32" width="900"/>
+  <img src="https://raw.githubusercontent.com/Quangdz315/QLVB-QLKH-lesonquang/main/imgs/01_dashboard_qlns.png" alt="Dashboard quản lý nhân sự" width="900"/>
 </p>
 
-**Hình 3.1 – Giao diện Dashboard**
-Hiển thị tổng quan các chỉ số quan trọng của hệ thống như số lượng nhân viên, hợp đồng, đơn hàng và tình trạng hoạt động chung.
+**Hình 3.1 – Dashboard quản lý nhân sự**
+Hiển thị tổng quan tình trạng nhân sự, hợp đồng, nghỉ phép, tuyển dụng và các chỉ số vận hành chính.
+
+<p align="center">
+  <img src="https://raw.githubusercontent.com/Quangdz315/QLVB-QLKH-lesonquang/main/imgs/02_danh_sach_nhan_vien.png" alt="Danh sách nhân viên" width="900"/>
+</p>
+
+**Hình 3.2 – Danh sách nhân viên**
+Cho phép theo dõi hồ sơ nhân viên, mã định danh, phòng ban, chức vụ và trạng thái làm việc.
+
+<p align="center">
+  <img src="https://raw.githubusercontent.com/Quangdz315/QLVB-QLKH-lesonquang/main/imgs/03_chi_tiet_nhan_vien.png.jpg" alt="Chi tiết nhân viên" width="900"/>
+</p>
+
+**Hình 3.3 – Chi tiết nhân viên**
+Quản lý thông tin cá nhân, thông tin công việc, liên hệ và dữ liệu phục vụ phân công trong các module khác.
+
+<p align="center">
+  <img src="https://raw.githubusercontent.com/Quangdz315/QLVB-QLKH-lesonquang/main/imgs/04_cham_cong_luong.jpg" alt="Chấm công và lương" width="900"/>
+</p>
+
+**Hình 3.4 – Chấm công và lương**
+Theo dõi dữ liệu chấm công, bảng lương và các nghiệp vụ liên quan đến quản trị nhân sự.
 
 ---
 
-### 👥 2. Quản lý nhân sự
+### 🗂️ 2. Phân hệ quản lý văn bản
 
 <p align="center">
-  <img src="https://github.com/user-attachments/assets/64ebdfdd-92e6-4d34-a508-9ac472356676" width="900"/>
+  <img src="https://raw.githubusercontent.com/Quangdz315/QLVB-QLKH-lesonquang/main/imgs/05_dashboard_qlvb.png.jpg" alt="Dashboard quản lý văn bản" width="900"/>
 </p>
 
-**Hình 3.2 – Giao diện quản lý nhân viên**
-Cho phép quản lý thông tin nhân viên, phân quyền, theo dõi trạng thái làm việc và các nghiệp vụ liên quan.
+**Hình 3.5 – Dashboard quản lý văn bản**
+Tổng hợp tình trạng văn bản đến, văn bản đi, văn bản cần xử lý và các cảnh báo quan trọng.
+
+<p align="center">
+  <img src="https://raw.githubusercontent.com/Quangdz315/QLVB-QLKH-lesonquang/main/imgs/06_van_ban_den.png.jpg" alt="Danh sách văn bản đến" width="900"/>
+</p>
+
+**Hình 3.6 – Danh sách văn bản đến**
+Quản lý văn bản đến, phân loại, người phụ trách, trạng thái xử lý và thời hạn thực hiện.
+
+<p align="center">
+  <img src="https://raw.githubusercontent.com/Quangdz315/QLVB-QLKH-lesonquang/main/imgs/07_van_ban_di.png.jpg" alt="Danh sách văn bản đi" width="900"/>
+</p>
+
+**Hình 3.7 – Danh sách văn bản đi**
+Theo dõi văn bản đi, nơi nhận, trạng thái gửi và lịch sử xử lý.
+
+<p align="center">
+  <img src="https://raw.githubusercontent.com/Quangdz315/QLVB-QLKH-lesonquang/main/imgs/08_ai_phan_tich_van_ban.png.jpg" alt="AI phân tích văn bản" width="900"/>
+</p>
+
+**Hình 3.8 – AI phân tích văn bản**
+Hỗ trợ phân tích nội dung văn bản, nhận diện thông tin quan trọng và gợi ý xử lý.
+
+<p align="center">
+  <img src="https://raw.githubusercontent.com/Quangdz315/QLVB-QLKH-lesonquang/main/imgs/09_tro_ly_ai.png.jpg" alt="Trợ lý AI" width="900"/>
+</p>
+
+**Hình 3.9 – Trợ lý AI**
+Cung cấp giao diện hỏi đáp, tra cứu và hỗ trợ người dùng trong quá trình vận hành hệ thống.
 
 ---
 
-### 🧑‍💼 3. Dashboard khách hàng
+### 🧑‍💼 3. Phân hệ quản lý khách hàng
 
 <p align="center">
-  <img src="https://github.com/user-attachments/assets/e2962e2b-012a-41d3-b724-2def46e292cd" width="900"/>
+  <img src="https://raw.githubusercontent.com/Quangdz315/QLVB-QLKH-lesonquang/main/imgs/10_dashboard_qlkh.png.jpg" alt="Dashboard quản lý khách hàng" width="900"/>
 </p>
 
-**Hình 3.3 – Dashboard khách hàng**
-Tổng hợp dữ liệu khách hàng, lịch sử giao dịch và các chỉ số hỗ trợ theo dõi mối quan hệ khách hàng (CRM).
+**Hình 3.10 – Dashboard quản lý khách hàng**
+Tổng hợp dữ liệu khách hàng, hồ sơ, văn bản liên quan, đơn hàng và các chỉ số chăm sóc khách hàng.
+
+<p align="center">
+  <img src="https://raw.githubusercontent.com/Quangdz315/QLVB-QLKH-lesonquang/main/imgs/11_ho_so_khach_hang.png.jpg" alt="Hồ sơ khách hàng" width="900"/>
+</p>
+
+**Hình 3.11 – Hồ sơ khách hàng**
+Quản lý thông tin khách hàng, người phụ trách, mức độ ưu tiên và trạng thái quan hệ khách hàng.
+
+<p align="center">
+  <img src="https://raw.githubusercontent.com/Quangdz315/QLVB-QLKH-lesonquang/main/imgs/12_don_hang_dich%20vu.png.jpg" alt="Đơn hàng dịch vụ" width="900"/>
+</p>
+
+**Hình 3.12 – Đơn hàng dịch vụ**
+Theo dõi đơn hàng, dịch vụ, khách hàng, trạng thái thực hiện và giá trị giao dịch.
+
+<p align="center">
+  <img src="https://raw.githubusercontent.com/Quangdz315/QLVB-QLKH-lesonquang/main/imgs/13_thanh_toan.png.jpg" alt="Thanh toán" width="900"/>
+</p>
+
+**Hình 3.13 – Thanh toán**
+Quản lý tình trạng thanh toán, công nợ và thông tin tài chính liên quan đến khách hàng.
+
+<p align="center">
+  <img src="https://raw.githubusercontent.com/Quangdz315/QLVB-QLKH-lesonquang/main/imgs/15_cham_soc_khach_hang_ai.png.jpg" alt="Chăm sóc khách hàng AI" width="900"/>
+</p>
+
+**Hình 3.14 – Chăm sóc khách hàng AI**
+Hỗ trợ chăm sóc khách hàng bằng AI, ghi nhận tương tác và gợi ý phản hồi phù hợp.
 
 ---
 
-### 📄 4. Quản lý hợp đồng
+### 🌐 4. Ứng dụng tích hợp bên ngoài
 
 <p align="center">
-  <img src="https://github.com/user-attachments/assets/aa526e11-ecc2-4599-b771-9007bc8dea54" width="900"/>
+  <img src="https://raw.githubusercontent.com/Quangdz315/QLVB-QLKH-lesonquang/main/imgs/16_external_app_8070.png.jpg" alt="Ứng dụng tích hợp bên ngoài" width="900"/>
 </p>
 
-**Hình 3.4 – Giao diện danh sách hợp đồng**
-Quản lý danh sách hợp đồng, trạng thái hiệu lực, thời hạn và thông tin chi tiết của từng hợp đồng.
-
----
-
-### 💼 5. Quản lý cơ hội bán hàng
-
-<p align="center">
-  <img src="https://github.com/user-attachments/assets/20a2c4b6-7aa8-4c42-9c0f-651e937642f4" width="900"/>
-</p>
-
-**Hình 3.5 – Giao diện danh sách cơ hội bán hàng**
-Theo dõi pipeline bán hàng, trạng thái từng cơ hội và hỗ trợ tối ưu hoạt động kinh doanh.
-
----
-
-### 🛒 6. Quản lý đơn hàng
-
-<p align="center">
-  <img src="https://github.com/user-attachments/assets/8dae9b54-17cc-4abd-a6b4-5bdce1b1bd32" width="900"/>
-</p>
-
-**Hình 3.6 – Giao diện danh sách đơn hàng**
-Quản lý thông tin đơn hàng, trạng thái xử lý, khách hàng và giá trị đơn hàng.
-
----
-
-### 🗂️ 7. Quản lý văn bản
-
-<p align="center">
-  <img src="https://github.com/user-attachments/assets/ed3a6559-a815-4430-9d3b-a9fd0a642560" width="900"/>
-</p>
-
-**Hình 3.7 – Dashboard quản lý văn bản**
-Tổng quan hệ thống văn bản đến – đi, hỗ trợ tìm kiếm và theo dõi trạng thái xử lý.
-
-<p align="center">
-  <img src="https://github.com/user-attachments/assets/d9d74dcc-3ed1-42a8-bbf8-02a5318446f7" width="900"/>
-</p>
-
-**Hình 3.8 – Danh sách văn bản đến**
-Quản lý văn bản đến, phân loại, xử lý và theo dõi tiến độ.
-
-<p align="center">
-  <img src="https://github.com/user-attachments/assets/4c12ae94-9fef-402e-8fad-df5076a25b10" width="900"/>
-</p>
-
-**Hình 3.9 – Danh sách văn bản đi**
-Quản lý văn bản đi, lưu trữ lịch sử và trạng thái gửi.
-
----
-
-### 🤖 8. Chatbot hỗ trợ
-
-<p align="center">
-  <img src="https://github.com/user-attachments/assets/a39f4bed-adae-49b3-8f70-e74efb92d64b" width="900"/>
-</p>
-
-**Hình 3.10 – Chatbot hỗ trợ người dùng**
-Chatbot tích hợp giúp hỗ trợ tra cứu thông tin, giải đáp nhanh các câu hỏi và hướng dẫn sử dụng hệ thống.
+**Hình 3.15 – External App**
+Giao diện ứng dụng ngoài kết nối với Odoo, minh họa khả năng tích hợp qua API.
 
 
 
