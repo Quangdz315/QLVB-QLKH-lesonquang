@@ -43,11 +43,12 @@
 
 ## 👥 Thành viên thực hiện
 
-| STT | Mã sinh viên | Họ và tên           | Lớp        | Nhóm        |
-| --- | ------------ | ------------------- | ---------- | ----------  |
-| 1   | 1671020139   | Nguyễn Hữu Huy      | CNTT 16-01 | Nhóm 4      |
-| 2   | 1671020041   | Nguyễn Thanh Bình   | CNTT 16-01 | Nhóm 4      |
-| 3   | 1671020182   | Đào Thị Phương Long | CNTT 16-01 | Nhóm 4      |
+| STT | Ma sinh vien | Ho va ten | Lop | Nhom |
+| --- | ------------ | --------- | --- | ---- |
+| 1 | 1771020581 | Le Son Quang  | CNTT 17-02 | Nhom 10 |
+| 2 | 1771020648 | Tran Van Thinh| CNTT 17-02 | Nhom 10 |
+| 3 | 1771020282 | Nguyen Thi Hoa| CNTT 17-02 | Nhom 10 |
+| 1 | 1771020581 | Ha Quang Dung | CNTT 17-02 | Nhom 10 |
 
 ---
 
