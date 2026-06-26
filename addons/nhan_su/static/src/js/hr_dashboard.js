@@ -56,9 +56,6 @@ odoo.define('nhan_su.hr_dashboard', function (require) {
             const candidates = await this._count('ung_vien_tuyen_dung', [['trang_thai', 'in', ['moi', 'sang_loc', 'phong_van']]]);
             const departments = await this._read('phong_ban', [], ['ten_phong_ban'], 8, 'ten_phong_ban asc');
             const recentEmployees = await this._read('nhan_vien', [['active', '=', true]], ['ho_ten', 'ma_dinh_danh', 'email_cong_ty', 'que_quan', 'image_1920', 'phong_ban_id', 'chuc_vu_id', 'trang_thai'], 6, 'id desc');
-            recentEmployees.forEach(function (employee) {
-                employee.image_url = employee.image_1920 ? '/web/image/nhan_vien/' + employee.id + '/image_1920' : false;
-            });
             const recentContracts = await this._read('hop_dong_lao_dong', [], ['ma_hop_dong', 'nhan_vien_id', 'ngay_bat_dau', 'ngay_ket_thuc', 'trang_thai'], 5, 'id desc');
             const recentCandidates = await this._read('ung_vien_tuyen_dung', [], ['ho_ten', 'email', 'so_dien_thoai', 'trang_thai'], 5, 'id desc');
             const statusCounts = await Promise.all([

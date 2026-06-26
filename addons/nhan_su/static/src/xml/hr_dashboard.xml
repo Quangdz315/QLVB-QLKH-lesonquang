@@ -73,8 +73,8 @@
                 <div class="o_ql_employee_cards">
                     <t t-foreach="data.recentEmployees" t-as="employee">
                         <article class="o_ql_employee_card">
-                            <img t-if="employee.image_url" t-att-src="employee.image_url" alt="Ảnh"/>
-                            <div t-if="!employee.image_url" class="o_ql_avatar_placeholder"><i class="fa fa-user"/></div>
+                            <img t-if="employee.image_1920" t-att-src="'data:image/png;base64,' + employee.image_1920" alt="Ảnh"/>
+                            <div t-if="!employee.image_1920" class="o_ql_avatar_placeholder"><i class="fa fa-user"/></div>
                             <h3><t t-esc="employee.ho_ten"/></h3>
                             <span class="o_ql_badge"><t t-esc="employee.ma_dinh_danh"/></span>
                             <p><i class="fa fa-briefcase"/> <t t-esc="employee.chuc_vu_id &amp;&amp; employee.chuc_vu_id[1] || 'Chưa có chức vụ'"/></p>
