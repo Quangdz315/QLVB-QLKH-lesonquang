@@ -1,12 +1,17 @@
 <h2 align="center">
     <a href="https://dainam.edu.vn/vi/khoa-cong-nghe-thong-tin">
-    Faculty of Information Technology - Dai Nam University
+    🎓 Faculty of Information Technology (DaiNam University)
     </a>
 </h2>
-
 <h2 align="center">
-    ERP: HE THONG QUAN LY NHAN SU, KHACH HANG VA VAN BAN
+    ERP: HỆ THỐNG QUẢN LÝ KHÁCH HÀNG & VĂN BẢN
 </h2>
+<div align="center">
+    <p align="center">
+        <img src="docs/logo/aiotlab_logo.png" alt="AIoTLab Logo" width="170"/>
+        <img src="docs/logo/fitdnu_logo.png" alt="AIoTLab Logo" width="180"/>
+        <img src="docs/logo/dnu_logo.png" alt="DaiNam University Logo" width="200"/>
+    </p>
 
 <div align="center">
 
