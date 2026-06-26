@@ -8,9 +8,9 @@
 </h2>
 <div align="center">
     <p align="center">
-        <img src="imgs/aiotlab_logo.png" alt="AIoTLab Logo" width="170"/>
-        <img src="imgs/fitdnu_logo.png" alt="Faculty of Information Technology Logo" width="180"/>
-        <img src="imgs/dnu_logo.png" alt="DaiNam University Logo" width="200"/>
+        <img src="https://raw.githubusercontent.com/Quangdz315/QLVB-QLKH-lesonquang/main/imgs/aiotlab_logo.png" alt="AIoTLab Logo" width="170"/>
+        <img src="https://raw.githubusercontent.com/Quangdz315/QLVB-QLKH-lesonquang/main/imgs/fitdnu_logo.png" alt="Faculty of Information Technology Logo" width="180"/>
+        <img src="https://raw.githubusercontent.com/Quangdz315/QLVB-QLKH-lesonquang/main/imgs/dnu_logo.png" alt="DaiNam University Logo" width="200"/>
     </p>
 
 [![AIoTLab](https://img.shields.io/badge/AIoTLab-green?style=for-the-badge)](https://www.facebook.com/DNUAIoTLab)
